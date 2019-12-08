@@ -8,6 +8,10 @@ A script that generates a hello world app in Python's flask with proper director
 3. python3 app.py
 4. open up http://localhost:5000 :)
 
+### Add to path(Optional)
+1. cp create-flask-app.py /usr/local/bin
+2. You should now be able to run create-flask-app.py from anywhere :)
+
 ### Installation
 1. Clone the repo
     - $ git clone https://github.com/kouul/create-flask-app
