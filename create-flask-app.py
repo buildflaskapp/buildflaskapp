@@ -7,6 +7,11 @@ new_folder = sys.argv[1]
 static_folder = "/static"
 templates_folder = "/templates"
 
+
+# Index.html lines
+lineHtml = "<!DOCTYPE html>\n<html>\n<head>\n<title>Hello World</title>\n</head>\n<body>\n<h1>Hello World!!</h1>\n</body>\n</html>\n"
+
+# App.py lines
 line1 = "from flask import Flask, render_template\n"
 line2 = "app = Flask(__name__)\n"
 line3 = "@app.route('/')\n\n"
@@ -27,7 +32,11 @@ else:
 try:
     os.makedirs(new_folder + static_folder)
     os.makedirs(new_folder + templates_folder)
-    # index-html = open(new_folder + "/index.html", "w+")
+    
+    indexHtml = open(new_folder + templates_folder + "/index.html", "w+")
+    indexHtml.writelines([lineHtml])
+    indexHtml.close()
+
     appPy = open(new_folder + "/app.py", "w+")
     appPy.writelines([line1, line2, line3, line4, line5, line6, line7])
     appPy.close()
