@@ -9,6 +9,7 @@ templates_folder = "/templates"
 
 def createStaticFolder():
     os.makedirs(new_folder + static_folder)
+    # This is where stylesheets goes
 
 def createTemplatesFolder():
     os.makedirs(new_folder + templates_folder)
