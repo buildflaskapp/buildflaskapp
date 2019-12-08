@@ -12,15 +12,7 @@ templates_folder = "/templates"
 lineHtml = "<!DOCTYPE html>\n<html>\n<head>\n<title>Hello World</title>\n</head>\n<body>\n<h1>Hello World!!</h1>\n</body>\n</html>\n"
 
 # App.py lines
-line1 = "from flask import Flask, render_template\n"
-line2 = "app = Flask(__name__)\n"
-line3 = "@app.route('/')\n\n"
-
-line4 = "def hello():\n"
-line5 = "\treturn render_template('index.html')\n\n"
-
-line6 = "if __name__ == '__main__':\n"
-line7 = "\tapp.run()\n"
+linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n" + "@app.route('/')\n\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run()\n"
 
 try:
     os.mkdir(new_folder)
@@ -38,7 +30,7 @@ try:
     indexHtml.close()
 
     appPy = open(new_folder + "/app.py", "w+")
-    appPy.writelines([line1, line2, line3, line4, line5, line6, line7])
+    appPy.writelines([linePython])
     appPy.close()
 except OSError:
     print("Creation of sub directory failed: %s" % sys.argv[1])
