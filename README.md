@@ -12,6 +12,12 @@ A script that generates a hello world app in Python's flask with proper director
 
 3. You're done :)
 
+### How to use
+1. $ python3 create-flask-app.py Login-App
+2. cd Login-App
+3. python3 app.py
+4. open up http://localhost:5000 :)
+
 ### Coming features
 1. Debug option on (-dB)
 2. Include Stylesheet and Script (-Ss)
