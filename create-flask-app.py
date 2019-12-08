@@ -1,9 +1,7 @@
 import os
 import sys
 
-# current_path = os.getcwd()
 new_folder = sys.argv[1]
-# print("Your current working path is %s" % current_path)
 static_folder = "/static"
 templates_folder = "/templates"
 
