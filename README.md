@@ -15,6 +15,10 @@ A script that generates a hello world app in Python's flask with proper director
 2. chmod +x /usr/local/bin/create-flask-app.py
 3. You should now be able to run create-flask-app.py from any directory :)
 
+### Options to pass as Arguments
+- python3 create-flask-app.py Login-App **-dB** --> enable debug mode on app.py
+- python3 create-flask-app.py Login-App **-sS** --> import style.css and app.js automatically
+
 ### Coming features
 - [ ] Manual(man create-flask-app)
 - [x] Debug option on (-dB)
