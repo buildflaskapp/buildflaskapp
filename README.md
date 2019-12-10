@@ -3,8 +3,8 @@
 A script that generates a hello world app in Python's flask with proper directory structure that you can modify to build your app.
 
 ### How to use
-1. $ python3 create-flask-app.py Login-App
-2. cd Login-App
+1. $ python3 create-flask-app.py {app_name}
+2. cd {app_name}
 3. python3 app.py
 4. open up http://localhost:5000 :)
 
@@ -16,8 +16,8 @@ A script that generates a hello world app in Python's flask with proper director
 3. You should now be able to run create-flask-app.py from any directory :)
 
 ### Options to pass as Arguments
-- python3 create-flask-app.py Login-App **-dB** --> enable debug mode on app.py
-- python3 create-flask-app.py Login-App **-sS** --> import style.css and app.js automatically
+- python3 create-flask-app.py {app_name} **-dB** --> enable debug mode on app.py
+- python3 create-flask-app.py {app_name} **-sS** --> import style.css and app.js automatically
 
 ### Coming features
 - [ ] Manual(man create-flask-app)
