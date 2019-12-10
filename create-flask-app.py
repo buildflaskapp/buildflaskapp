@@ -10,15 +10,15 @@ addStyleScript = False
 
 def createStaticFolder():
     # This is where stylesheets goes
-    print("-sS mode on")
+    print("-css & js mode on")
     os.makedirs(new_folder + static_folder + "/stylesheet")
-    styleCss = open(new_folder + static_folder + "/stylesheet" + "/style.css", "w+")
-    styleCss.close()
+    cssFile = open(new_folder + static_folder + "/stylesheet" + "/style.css", "w+")
+    cssFile.close()
 
     # This is where javascript goes
     os.makedirs(new_folder + static_folder + "/js")
-    styleJs = open(new_folder + static_folder + "/js" + "/app.js", "w+")
-    styleJs.close()
+    jsFile = open(new_folder + static_folder + "/js" + "/app.js", "w+")
+    jsFile.close()
 
 def createTemplatesFolder():
     os.makedirs(new_folder + templates_folder)
@@ -33,7 +33,7 @@ def createTemplatesFolder():
 def createAppPy():
     appPy = open(new_folder + "/app.py", "w+")
     if (addDebug):
-        print("Debug mode on")
+        print("-debug mode on")
         linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n\n" + "@app.route('/')\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run(debug=True)\n"
     else:
         linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n\n" + "@app.route('/')\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run()\n"
