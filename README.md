@@ -16,6 +16,6 @@ A script that generates a hello world app in Python's flask with proper director
 3. You should now be able to run create-flask-app.py from any directory :)
 
 ### Coming features
-[ ] Manual(man create-flask-app)
-[x] Debug option on (-dB)
-[ ] Include Stylesheet and Script (-Ss)
+ [ ] Manual(man create-flask-app)
+ [x] Debug option on (-dB)
+ [x] Include Stylesheet and Script (-Ss)
