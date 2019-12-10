@@ -6,14 +6,26 @@ new_folder = sys.argv[1]
 static_folder = "/static"
 templates_folder = "/templates"
 addDebug = False
+addStyleScript = False
 
 def createStaticFolder():
-    os.makedirs(new_folder + static_folder)
     # This is where stylesheets goes
+    print("-sS mode on")
+    os.makedirs(new_folder + static_folder + "/stylesheet")
+    styleCss = open(new_folder + static_folder + "/stylesheet" + "/style.css", "w+")
+    styleCss.close()
+
+    # This is where javascript goes
+    os.makedirs(new_folder + static_folder + "/js")
+    styleJs = open(new_folder + static_folder + "/js" + "/app.js", "w+")
+    styleJs.close()
 
 def createTemplatesFolder():
     os.makedirs(new_folder + templates_folder)
-    lineHtml = "<!DOCTYPE html>\n<html>\n<head>\n<title>Hello World</title>\n</head>\n<body>\n<h1>Hello World!!</h1>\n</body>\n</html>\n"
+    if (addStyleScript):
+        lineHtml = "<!DOCTYPE html>\n<html>\n<head>\n<title>Hello World</title>\n<link rel='stylesheet' href='/static/stylesheet/style.css'>\n</head>\n<body>\n<h1>Hello World!!</h1>\n<script src='/static/js/app.js'></script>\n</body>\n</html>\n"
+    else:
+        lineHtml = "<!DOCTYPE html>\n<html>\n<head>\n<title>Hello World</title>\n</head>\n<body>\n<h1>Hello World!!</h1>\n</body>\n</html>\n"
     indexHtml = open(new_folder + templates_folder + "/index.html", "w+")
     indexHtml.writelines([lineHtml])
     indexHtml.close()
@@ -30,11 +42,13 @@ def createAppPy():
 
 try:
     os.mkdir(new_folder)
-    createStaticFolder()
     createTemplatesFolder()
     if len(sys.argv) > 2:
         if '-dB' in sys.argv:
             addDebug = True
+        if '-sS' in sys.argv:
+            addStyleScript = True
+            createStaticFolder()
     else:
         print("No options passed in")
 
