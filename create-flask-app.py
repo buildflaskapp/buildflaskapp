@@ -5,6 +5,7 @@ import sys
 new_folder = sys.argv[1]
 static_folder = "/static"
 templates_folder = "/templates"
+addDebug = False
 
 def createStaticFolder():
     os.makedirs(new_folder + static_folder)
@@ -19,13 +20,11 @@ def createTemplatesFolder():
 
 def createAppPy():
     appPy = open(new_folder + "/app.py", "w+")
-    linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n\n" + "@app.route('/')\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run()\n"
-    appPy.writelines([linePython])
-    appPy.close()
-
-def createAppPyDebug():
-    appPy = open(new_folder + "/app.py", "w+")
-    linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n\n" + "@app.route('/')\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run(debug=True)\n"
+    if (addDebug):
+        print("Debug mode on")
+        linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n\n" + "@app.route('/')\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run(debug=True)\n"
+    else:
+        linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n\n" + "@app.route('/')\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run()\n"
     appPy.writelines([linePython])
     appPy.close()
 
@@ -35,10 +34,11 @@ try:
     createTemplatesFolder()
     if len(sys.argv) > 2:
         if '-dB' in sys.argv:
-            createAppPyDebug()
+            addDebug = True
     else:
         print("No options passed in")
-        createAppPy()
+
+    createAppPy()
 except OSError:
     print("Creation of directory failed: %s" % sys.argv[1])
 else:
