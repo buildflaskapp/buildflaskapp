@@ -23,11 +23,22 @@ def createAppPy():
     appPy.writelines([linePython])
     appPy.close()
 
+def createAppPyDebug():
+    appPy = open(new_folder + "/app.py", "w+")
+    linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n\n" + "@app.route('/')\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run(debug=True)\n"
+    appPy.writelines([linePython])
+    appPy.close()
+
 try:
     os.mkdir(new_folder)
     createStaticFolder()
     createTemplatesFolder()
-    createAppPy()
+    if len(sys.argv) > 2:
+        if '-dB' in sys.argv:
+            createAppPyDebug()
+    else:
+        print("No options passed in")
+        createAppPy()
 except OSError:
     print("Creation of directory failed: %s" % sys.argv[1])
 else:
