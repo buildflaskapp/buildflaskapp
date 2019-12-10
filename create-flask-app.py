@@ -2,7 +2,7 @@
 import os
 import sys
 
-new_folder = sys.argv[1]
+app_folder = sys.argv[1]
 static_folder = "/static"
 templates_folder = "/templates"
 addDebug = False
@@ -11,27 +11,27 @@ addStyleScript = False
 def createStaticFolder():
     # This is where stylesheets goes
     print("-css & js mode on")
-    os.makedirs(new_folder + static_folder + "/stylesheet")
-    cssFile = open(new_folder + static_folder + "/stylesheet" + "/style.css", "w+")
+    os.makedirs(app_folder + static_folder + "/stylesheet")
+    cssFile = open(app_folder + static_folder + "/stylesheet" + "/style.css", "w+")
     cssFile.close()
 
     # This is where javascript goes
-    os.makedirs(new_folder + static_folder + "/js")
-    jsFile = open(new_folder + static_folder + "/js" + "/app.js", "w+")
+    os.makedirs(app_folder + static_folder + "/js")
+    jsFile = open(app_folder + static_folder + "/js" + "/app.js", "w+")
     jsFile.close()
 
 def createTemplatesFolder():
-    os.makedirs(new_folder + templates_folder)
+    os.makedirs(app_folder + templates_folder)
     if (addStyleScript):
         lineHtml = "<!DOCTYPE html>\n<html>\n<head>\n<title>Hello World</title>\n<link rel='stylesheet' href='/static/stylesheet/style.css'>\n</head>\n<body>\n<h1>Hello World!!</h1>\n<script src='/static/js/app.js'></script>\n</body>\n</html>\n"
     else:
         lineHtml = "<!DOCTYPE html>\n<html>\n<head>\n<title>Hello World</title>\n</head>\n<body>\n<h1>Hello World!!</h1>\n</body>\n</html>\n"
-    indexHtml = open(new_folder + templates_folder + "/index.html", "w+")
+    indexHtml = open(app_folder + templates_folder + "/index.html", "w+")
     indexHtml.writelines([lineHtml])
     indexHtml.close()
 
 def createAppPy():
-    appPy = open(new_folder + "/app.py", "w+")
+    appPy = open(app_folder + "/app.py", "w+")
     if (addDebug):
         print("-debug mode on")
         linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n\n" + "@app.route('/')\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run(debug=True)\n"
@@ -41,7 +41,7 @@ def createAppPy():
     appPy.close()
 
 try:
-    os.mkdir(new_folder)
+    os.mkdir(app_folder)
     createTemplatesFolder()
     if len(sys.argv) > 2:
         if '-dB' in sys.argv:
