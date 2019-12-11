@@ -42,7 +42,6 @@ def createAppPy():
 
 try:
     os.mkdir(app_folder)
-    createTemplatesFolder()
     if len(sys.argv) > 2:
         if '-dB' in sys.argv:
             addDebug = True
@@ -52,6 +51,7 @@ try:
     else:
         print("No options passed in")
 
+    createTemplatesFolder()
     createAppPy()
 except OSError:
     print("Creation of directory failed: %s" % sys.argv[1])
