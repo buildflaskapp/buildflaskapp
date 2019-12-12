@@ -7,6 +7,7 @@ A script that generates a hello world app in Python's flask with proper director
 2. cd {app_name}
 3. python3 app.py
 4. open up http://localhost:5000 :)
+Ensure that you have flask installed, or else it will not work! You can install flask using _pip install flask_.
 
 ![](create-flask-app.gif)
 
