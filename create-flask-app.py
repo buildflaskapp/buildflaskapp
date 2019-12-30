@@ -42,7 +42,6 @@ def createAppPy():
     appPy.close()
 
 def createDockerfile():
-    print('Folders have to be moved')
     # move folders in app folder
     os.makedirs(app_folder + "/app")
     files = os.listdir(app_folder)
@@ -67,6 +66,9 @@ def createDockerfile():
     linePython = "version: '3' \nservices: \n  web: \n    build: app \n    ports: \n      - '5000:5000'"
     dockercompose_yml.writelines([linePython])
     dockercompose_yml.close()
+
+    print('Please run \"docker-compose up -d\" to start app')
+
 
 try:
     if ((app_folder == 'app') or (app_folder.startswith('-'))):
