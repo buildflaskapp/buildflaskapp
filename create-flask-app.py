@@ -41,6 +41,33 @@ def createAppPy():
     appPy.writelines([linePython])
     appPy.close()
 
+def createDockerfile():
+    print('Folders have to be moved')
+    # move folders in app folder
+    os.makedirs(app_folder + "/app")
+    files = os.listdir(app_folder)
+    for f in files:
+        if f != 'app':
+            shutil.move(app_folder + '/' + f, app_folder + "/app")
+
+    # create requirements.txt
+    requirements_txt = open(app_folder + "/app/requirements.txt", "w+")
+    linePython = "flask\n"
+    requirements_txt.writelines([linePython])
+    requirements_txt.close()
+
+    # create Dockerfile
+    dockerfile_txt = open(app_folder + "/app/Dockerfile", "w+")
+    linePython = "FROM python:3.7-alpine \nWORKDIR /app \nCOPY . /app \nRUN pip3 install -r requirements.txt \nENTRYPOINT [\"python3\"] \nCMD [\"app.py\"]"
+    dockerfile_txt.writelines([linePython])
+    dockerfile_txt.close()
+
+    # create docker-compose.yml
+    dockercompose_yml = open(app_folder + "/docker-compose.yml", "w+")
+    linePython = "version: '3' \nservices: \n  web: \n    build: app \n    ports: \n      - '5000:5000'"
+    dockercompose_yml.writelines([linePython])
+    dockercompose_yml.close()
+
 try:
     os.mkdir(app_folder)
     if len(sys.argv) > 2:
@@ -55,31 +82,8 @@ try:
     createTemplatesFolder()
     createAppPy()
     if '-dC' in sys.argv:
-        print('Folders have to be moved')
-        # move folders in app folder
-        os.makedirs(app_folder + "/app")
-        files = os.listdir(app_folder)
-        for f in files:
-            if f != 'app':
-                shutil.move(app_folder + '/' + f, app_folder + "/app")
-
-        # create requirements.txt
-        requirements_txt = open(app_folder + "/app/requirements.txt", "w+")
-        linePython = "flask\n"
-        requirements_txt.writelines([linePython])
-        requirements_txt.close()
-
-        # create Dockerfile
-        dockerfile_txt = open(app_folder + "/app/Dockerfile", "w+")
-        linePython = "FROM python:3.7-alpine \nWORKDIR /app \nCOPY . /app \nRUN pip3 install -r requirements.txt \nENTRYPOINT [\"python3\"] \nCMD [\"app.py\"]"
-        dockerfile_txt.writelines([linePython])
-        dockerfile_txt.close()
-
-        # create docker-compose.yml
-        dockercompose_yml = open(app_folder + "/docker-compose.yml", "w+")
-        linePython = "version: '3' \nservices: \n  web: \n    build: app \n    ports: \n      - '5000:5000'"
-        dockercompose_yml.writelines([linePython])
-        dockercompose_yml.close()
+        createDockerfile()
+        
 except OSError:
     print("Creation of directory failed: %s" % sys.argv[1])
 else:
