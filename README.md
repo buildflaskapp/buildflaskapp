@@ -17,9 +17,19 @@ Ensure that you have flask installed, or else it will not work! You can install 
 3. You should now be able to run create-flask-app.py from any directory :)
 
 ### Options to pass as Arguments
-- python3 create-flask-app.py {app_name} **-dB** --> enable debug mode on app.py
-- python3 create-flask-app.py {app_name} **-sS** --> import style.css and app.js automatically
-- python3 create-flask-app.py {app_name} **-dC** --> docker-compose up -d
+- ##### Enable Debug Mode
+    You can enable debug mode on while creating your flask app by using the option **-dB**
+    - *python3 create-flask-app.py {app_name} **-dB***
+
+
+- ##### Import style.css and app.js
+    You can import stylesheet and javascript file automatically while creating the app using **-sS** option
+    - *python3 create-flask-app.py {app_name} **-sS***
+
+
+- ##### Create Dockerfile and docker-compose script
+    You can push the app to a docker container instead of running it locally. Simply use **-dC** option
+    - *python3 create-flask-app.py {app_name} **-dC***
 
 ### Coming features
 - [ ] Manual(man create-flask-app)
