@@ -69,22 +69,25 @@ def createDockerfile():
     dockercompose_yml.close()
 
 try:
-    os.mkdir(app_folder)
-    if len(sys.argv) > 2:
-        if '-dB' in sys.argv:
-            addDebug = True
-        if '-sS' in sys.argv:
-            addStyleScript = True
-            createStaticFolder()
+    if ((app_folder == 'app') or (app_folder.startswith('-'))):
+        print('Please choose another app name')
+        print("Creation of directory failed: %s" % sys.argv[1])
     else:
-        print("No options passed in")
+        os.mkdir(app_folder)
+        if len(sys.argv) > 2:
+            if '-dB' in sys.argv:
+                addDebug = True
+            if '-sS' in sys.argv:
+                addStyleScript = True
+                createStaticFolder()
+        else:
+            print("No options passed in")
 
-    createTemplatesFolder()
-    createAppPy()
-    if '-dC' in sys.argv:
-        createDockerfile()
-        
+        createTemplatesFolder()
+        createAppPy()
+        if '-dC' in sys.argv:
+            createDockerfile()
+        print("Creation of directory success: %s" % sys.argv[1])
+
 except OSError:
     print("Creation of directory failed: %s" % sys.argv[1])
-else:
-    print("Creation of directory success: %s" % sys.argv[1])
