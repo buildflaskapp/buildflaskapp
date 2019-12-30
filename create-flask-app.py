@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 import sys
+import shutil
 
 app_folder = sys.argv[1]
 static_folder = "/static"
@@ -34,9 +35,9 @@ def createAppPy():
     appPy = open(app_folder + "/app.py", "w+")
     if (addDebug):
         print("-debug mode on")
-        linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n\n" + "@app.route('/')\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run(debug=True)\n"
+        linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n\n" + "@app.route('/')\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run(debug=True, host='0.0.0.0')\n"
     else:
-        linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n\n" + "@app.route('/')\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run()\n"
+        linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n\n" + "@app.route('/')\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run(host='0.0.0.0')\n"
     appPy.writelines([linePython])
     appPy.close()
 
@@ -53,6 +54,32 @@ try:
 
     createTemplatesFolder()
     createAppPy()
+    if '-dC' in sys.argv:
+        print('Folders have to be moved')
+        # move folders in app folder
+        os.makedirs(app_folder + "/app")
+        files = os.listdir(app_folder)
+        for f in files:
+            if f != 'app':
+                shutil.move(app_folder + '/' + f, app_folder + "/app")
+
+        # create requirements.txt
+        requirements_txt = open(app_folder + "/app/requirements.txt", "w+")
+        linePython = "flask\n"
+        requirements_txt.writelines([linePython])
+        requirements_txt.close()
+
+        # create Dockerfile
+        dockerfile_txt = open(app_folder + "/app/Dockerfile", "w+")
+        linePython = "FROM python:3.7-alpine \nWORKDIR /app \nCOPY . /app \nRUN pip3 install -r requirements.txt \nENTRYPOINT [\"python3\"] \nCMD [\"app.py\"]"
+        dockerfile_txt.writelines([linePython])
+        dockerfile_txt.close()
+
+        # create docker-compose.yml
+        dockercompose_yml = open(app_folder + "/docker-compose.yml", "w+")
+        linePython = "version: '3' \nservices: \n  web: \n    build: app \n    ports: \n      - '5000:5000'"
+        dockercompose_yml.writelines([linePython])
+        dockercompose_yml.close()
 except OSError:
     print("Creation of directory failed: %s" % sys.argv[1])
 else:
