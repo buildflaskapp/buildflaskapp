@@ -9,6 +9,11 @@ templates_folder = "/templates"
 addDebug = False
 addStyleScript = False
 
+class bcolors:
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+
 def createStaticFolder():
     # This is where stylesheets goes
     print("-css & js mode on")
@@ -67,13 +72,13 @@ def createDockerfile():
     dockercompose_yml.writelines([linePython])
     dockercompose_yml.close()
 
-    print('Please run \"docker-compose up -d\" to start app')
+    print('Docker container initialized!!\n-> cd ' + app_folder + '\n-> \"docker-compose up -d\" to start app')
 
 
 try:
     if ((app_folder == 'app') or (app_folder.startswith('-'))):
-        print('Please choose another app name')
-        print("Creation of directory failed: %s" % sys.argv[1])
+        print(f'{bcolors.WARNING}Please choose another app name')
+        print(f"{bcolors.FAIL}Creation of directory failed: %s" % sys.argv[1])
     else:
         os.mkdir(app_folder)
         if len(sys.argv) > 2:
@@ -89,7 +94,7 @@ try:
         createAppPy()
         if '-dC' in sys.argv:
             createDockerfile()
-        print("Creation of directory success: %s" % sys.argv[1])
+        print(f"{bcolors.OKGREEN}Creation of directory success: %s" % sys.argv[1])
 
 except OSError:
-    print("Creation of directory failed: %s" % sys.argv[1])
+    print(f"{bcolors.FAIL}Creation of directory failed: %s" % sys.argv[1])
