@@ -15,7 +15,7 @@ $ python3 create-flask-app.py app_name
 $ cd app_name
 $ python3 app.py
 ```
-![](./tutorial/create-flask-app.gif)
+![](./test/create-flask-app.gif)
 
 Open up http://localhost:5000/ to see your Hello World app.
 
@@ -24,7 +24,7 @@ Open up http://localhost:5000/ to see your Hello World app.
 $ cp create-flask-app.py /usr/local/bin/
 $ chmod +x /usr/local/bin/create-flask-app.py
 ```
-After setting environment variable, you should be able to run _create-flask-app.py_ from anywhere on you pc
+After setting environment variable, you should be able to run _create-flask-app.py_ from anywhere on your pc
 
 ### Arguments
 - ##### Enable Debug Mode
@@ -51,5 +51,6 @@ After setting environment variable, you should be able to run _create-flask-app.
 - [x] Debug option on (-dB)
 - [x] Include Stylesheet and Script (-sS)
 - [x] Push app to docker container (-dC)
+- [ ] Deploy on heroku (-hK)
 
 Feel free to create issue in case something is not working :)
