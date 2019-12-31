@@ -72,12 +72,22 @@ def createDockerfile():
     dockercompose_yml.writelines([linePython])
     dockercompose_yml.close()
 
-    print('Docker container initialized!!\n-> cd ' + app_name + '\n-> \"docker-compose up -d\" to start app')
+    print('Dockerfile generated.')
+    print('--> cd %s' % app_name)
+    print('--> \"docker-compose up -d\" to start app')
 
 try:
     if ((app_name == 'app') or (app_name.startswith('-'))):
-        print(f'{bcolors.WARNING}Please choose another app name')
-        print(f"{bcolors.FAIL}Creation of directory failed: %s" % sys.argv[1])
+        if (app_name == '-h' or app_name == '--help'):
+            print('Usage: create-flask-app [app_name] [arguments]\n')
+            print('Arguments:')
+            print('  -dB \t\t debug mode on')
+            print('  -sS \t\t import stylesheet and script tag')
+            print('  -dC \t\t create Dockerfile and docker-compose.yml')
+            print('  -h or --help \t Print help')
+        else:
+            print(f'{bcolors.WARNING}Please choose another app name')
+            print(f"{bcolors.FAIL}Creation of directory failed: %s" % sys.argv[1])
     else:
         os.mkdir(app_name)
         if len(sys.argv) > 2:
