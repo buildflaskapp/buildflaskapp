@@ -2,7 +2,14 @@
 
 Create flask apps simply by running one command.
 
-#### Usage
+### Get started
+You can start by cloning this repository to your local machine and you should be good to go
+```
+$ git clone https://github.com/kouul/create-flask-app
+$ cd create-flask-app
+```
+
+### Usage
 Ensure that you have flask installed on your environment. You can install flask using _pip3 install flask_.
 ```
 $ python3 create-flask-app.py app_name
@@ -10,7 +17,6 @@ $ cd app_name
 $ python3 app.py
 ```
 Open up http://localhost:5000/ to see your Hello World app.
-
 
 #### Set to path variable(Optional)
 ```
