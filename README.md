@@ -1,9 +1,8 @@
 ## Create Flask App
-
-Create flask apps simply by running one command.
+An easy to use flask app generator that allows users to create flask apps simply by running one command.
 
 ### Get started
-You can start by cloning this repository to your local machine and you should be good to go
+To download the app generator, you can clone this repository to your local machine.
 ```
 $ git clone https://github.com/kouul/create-flask-app
 $ cd create-flask-app
@@ -17,6 +16,7 @@ $ cd app_name
 $ python3 app.py
 ```
 Open up http://localhost:5000/ to see your Hello World app.
+![](./tutorial/create-flask-app.gif)
 
 #### Set to path variable(Optional)
 ```
@@ -25,22 +25,25 @@ $ chmod +x /usr/local/bin/create-flask-app.py
 ```
 After setting environment variable, you should be able to run _create-flask-app.py_ from anywhere on you pc
 
-#### Arguments
+### Arguments
 - ##### Enable Debug Mode
     You can enable debug mode on while creating your flask app by using the option **-dB**
-    - *python3 create-flask-app.py {app_name} **-dB***
-
+    ```
+    $ python3 create-flask-app.py app_name -dB
+    ```
 
 - ##### Import style.css and app.js
     You can import stylesheet and javascript file automatically while creating the app using **-sS** option
-    - *python3 create-flask-app.py {app_name} **-sS***
-
+    ```
+    python3 create-flask-app.py app_name -sS
+    ```
 
 - ##### Create Dockerfile and docker-compose script
-    You can push the app to a docker container instead of running it locally. Simply use **-dC** option
-    - *python3 create-flask-app.py {app_name} **-dC***
+    You can push the app to a docker container instead of running it locally. Simply use **-dC** option. Please note that the image generated in Dockerfile is *python:3.7-alpine*. You might want to change this to the non-alpine version for big projects
+    ```
+    python3 create-flask-app.py app_name -dC
+    ```
 
-    Please note that the image generated in Dockerfile is *python:3.7-alpine*. You might want to change this to the non-alpine version for big projects
 
 ### Coming features
 - [ ] Manual(man create-flask-app)
