@@ -35,20 +35,20 @@ After setting environment variable, you should be able to run _create-flask-app.
 - ##### Import style.css and app.js
     You can import stylesheet and javascript file automatically while creating the app using **-sS** option
     ```
-    python3 create-flask-app.py app_name -sS
+    $ python3 create-flask-app.py app_name -sS
     ```
 
 - ##### Create Dockerfile and docker-compose script
     You can push the app to a docker container instead of running it locally. Simply use **-dC** option. Please note that the image generated in Dockerfile is *python:3.7-alpine*. You might want to change this to the non-alpine version for big projects
     ```
-    python3 create-flask-app.py app_name -dC
+    $ python3 create-flask-app.py app_name -dC
     ```
 
 
 ### Coming features
-- [ ] Manual(man create-flask-app)
+- [ ] Manual(--help)
 - [x] Debug option on (-dB)
-- [x] Include Stylesheet and Script (-Ss)
+- [x] Include Stylesheet and Script (-sS)
 - [x] Push app to docker container (-dC)
 
 Feel free to create issue in case something is not working :)
