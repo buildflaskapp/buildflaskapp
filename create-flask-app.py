@@ -17,7 +17,7 @@ else:
             print_manual()
         else:
             print(f'{bcolors.WARNING}Please choose another app name')
-            success = False
+            print(f"{bcolors.FAIL}Creation of directory failed: %s" % sys.argv[1])
     else:
         try:
             create_dir(app_name)
@@ -40,9 +40,4 @@ else:
 
         if '-dC' in sys.argv:
             create_dockerfile(app_name)
-        success = True
-
-if success:
-    print(f"{bcolors.OKGREEN}Creation of directory success: %s" % sys.argv[1])
-else:
-    print(f"{bcolors.FAIL}Creation of directory failed: %s" % sys.argv[1])
+        print(f"{bcolors.OKGREEN}Creation of directory success: %s" % sys.argv[1])
