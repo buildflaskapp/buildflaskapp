@@ -30,6 +30,7 @@ Ensure that you have flask installed, or else it will not work! You can install 
 - ##### Create Dockerfile and docker-compose script
     You can push the app to a docker container instead of running it locally. Simply use **-dC** option
     - *python3 create-flask-app.py {app_name} **-dC***
+    Please note that the image generated in Dockerfile is *python:3.7-alpine*. You might want to change this to the non-alpine version for big projects
 
 ### Coming features
 - [ ] Manual(man create-flask-app)
