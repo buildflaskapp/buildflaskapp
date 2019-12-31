@@ -72,14 +72,14 @@ def createDockerfile():
     dockercompose_yml.writelines([linePython])
     dockercompose_yml.close()
 
-    print('Dockerfile generated.')
-    print('--> cd %s' % app_name)
-    print('--> \"docker-compose up -d\" to start app')
+    print("-dockerfile generated")
+    print('  --> cd %s' % app_name)
+    print('  --> \"docker-compose up -d\" to start app')
 
 try:
     if ((app_name == 'app') or (app_name.startswith('-'))):
         if (app_name == '-h' or app_name == '--help'):
-            print('Usage: create-flask-app [app_name] [arguments]\n')
+            print('Usage: create-flask-app [app_name] -[arguments]\n')
             print('Arguments:')
             print('  -dB \t\t debug mode on')
             print('  -sS \t\t import stylesheet and script tag')
