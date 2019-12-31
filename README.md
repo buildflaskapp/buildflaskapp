@@ -1,19 +1,23 @@
-### Flask App Generator
+## Create Flask App
 
-A script that generates a hello world app in Python's flask with proper directory structure that you can modify to build your app.
+Create flask apps simply by running one command.
 
 #### Usage
-1. $ python3 create-flask-app.py {app_name}
-2. cd {app_name}
-3. python3 app.py
-4. open up http://localhost:5000 :)
+Ensure that you have flask installed on your environment. You can install flask using _pip3 install flask_.
+```
+$ python3 create-flask-app.py app_name
+$ cd app_name
+$ python3 app.py
+```
+Open up http://localhost:5000/ to see your Hello World app.
 
-Ensure that you have flask installed, or else it will not work! You can install flask using _pip install flask_.
 
-#### Add to path(Optional)
-1. cp create-flask-app.py /usr/local/bin/
-2. chmod +x /usr/local/bin/create-flask-app.py
-3. You should now be able to run create-flask-app.py from any directory :)
+#### Set to path variable(Optional)
+```
+$ cp create-flask-app.py /usr/local/bin/
+$ chmod +x /usr/local/bin/create-flask-app.py
+```
+After setting environment variable, you should be able to run _create-flask-app.py_ from anywhere on you pc
 
 #### Arguments
 - ##### Enable Debug Mode
@@ -37,3 +41,5 @@ Ensure that you have flask installed, or else it will not work! You can install 
 - [x] Debug option on (-dB)
 - [x] Include Stylesheet and Script (-Ss)
 - [x] Push app to docker container (-dC)
+
+Feel free to create issue in case something is not working :)
