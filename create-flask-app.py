@@ -12,7 +12,7 @@ except:
     print(f"{bcolors.FAIL}Creation of directory failed")
     sys.exit(1)
 else:
-    if ((app_name == 'app') or (app_name.startswith('-'))):
+    if ((app_name == 'app') or (app_name.startswith('-')) or ("." in app_name)):
         if (app_name == '-h' or app_name == '--help'):
             print_manual()
         else:
