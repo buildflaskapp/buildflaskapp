@@ -2,11 +2,7 @@
 import sys
 from func.workflow import create_dir, create_app, create_templates_folder, create_static_folder, create_dockerfile
 from func.manual import print_manual
-
-class bcolors:
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
+from func.Colors import bcolors
 
 try:
     app_name = sys.argv[1]
