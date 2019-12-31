@@ -5,15 +5,25 @@ from func.manual import print_manual
 from func.Colors import bcolors
 
 try:
+    success = False
     app_name = sys.argv[1]
+except:
+    print(f"{bcolors.WARNING}App name cannot be empty")
+    print(f"{bcolors.FAIL}Creation of directory failed")
+    sys.exit(1)
+else:
     if ((app_name == 'app') or (app_name.startswith('-'))):
         if (app_name == '-h' or app_name == '--help'):
             print_manual()
         else:
             print(f'{bcolors.WARNING}Please choose another app name')
-            print(f"{bcolors.FAIL}Creation of directory failed: %s" % sys.argv[1])
+            success = False
     else:
-        create_dir(app_name)
+        try:
+            create_dir(app_name)
+        except FileExistsError:
+            print('Directory already exists')
+            sys.exit(1)
         addDebug = False
         addStyleScript = False
         if len(sys.argv) > 2:
@@ -30,7 +40,9 @@ try:
 
         if '-dC' in sys.argv:
             create_dockerfile(app_name)
-        
-        print(f"{bcolors.OKGREEN}Creation of directory success: %s" % sys.argv[1])
-except OSError:
+        success = True
+
+if success:
+    print(f"{bcolors.OKGREEN}Creation of directory success: %s" % sys.argv[1])
+else:
     print(f"{bcolors.FAIL}Creation of directory failed: %s" % sys.argv[1])
