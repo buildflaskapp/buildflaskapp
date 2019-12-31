@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import sys
-from func.workflow import create_dir, create_app, create_templates_folder, create_static_folder, create_dockerfile
-from func.manual import print_manual
-from func.Colors import bcolors
+from scripts.workflow import create_dir, create_app, create_templates_folder, create_static_folder, create_dockerfile
+from scripts.manual import print_manual
+from scripts.Colors import bcolors
 
 try:
     success = False

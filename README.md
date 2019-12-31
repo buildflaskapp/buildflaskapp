@@ -16,6 +16,7 @@ $ cd app_name
 $ python3 app.py
 ```
 ![](./tutorial/create-flask-app.gif)
+
 Open up http://localhost:5000/ to see your Hello World app.
 
 #### Set to path variable(Optional)
