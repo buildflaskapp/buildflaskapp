@@ -17,7 +17,7 @@ def get_app_name():
       sys.exit(1)
   return app_name
 
-def isValid(app_name):
+def is_name_valid(app_name):
   # regex to accept only alphanumeric
   if (bool(re.match(r"^[a-zA-Z0-9\-]*$", app_name)) and (app_name.startswith('-') is False) and (app_name != "app")):
     return True
@@ -29,6 +29,10 @@ def get_args():
   args = sys.argv
   args.remove('create-flask-app.py')
   return args
+
+def is_args_valid(args, valid_args_list):
+    valid_args =  all(arg in valid_args_list for arg in args)
+    return valid_args
 
 # create directory for application
 def create_dir(app_name):
