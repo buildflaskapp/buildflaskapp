@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from scripts.workflow import get_app_name, isValid, get_args, create_dir, create_app, create_templates_folder, create_static_folder, create_dockerfile
+from scripts.workflow import get_app_name, is_name_valid, get_args,  is_args_valid, create_dir, create_app, create_templates_folder, create_static_folder, create_dockerfile
 from scripts.manual import print_manual
 from scripts.Colors import bcolors
 import sys
@@ -9,16 +9,10 @@ args = get_args()
 args.remove(app_name)
 valid_args_list = ['-dB', '--debug', '-sS', '--css-js', '-dC', '--docker']
 
-if (isValid(app_name)):
-
+if (is_name_valid(app_name)):
     # validate all arguments first!!
-    valid_args =  all(arg in valid_args_list for arg in args)
-    if valid_args is False:
-        print('Unknown argument detected! Please check the help section\n')
-        print_manual()
-        print(f"{bcolors.FAIL}Creation of directory failed: %s" % app_name)
-        sys.exit(1)
-    else:
+    if(is_args_valid(args, valid_args_list)):
+
         # Create folder named app_name
         create_dir(app_name)
 
@@ -44,22 +38,27 @@ if (isValid(app_name)):
             print("- Debugger mode off")
             print("- Css and Js mode off")
             print("- Docker mode off")
-    
 
-    # if -sS enabled, creat static folder
-    if(import_css_js):
-        create_static_folder(app_name)
+        # if -sS enabled, creat static folder
+        if(import_css_js):
+            create_static_folder(app_name)
 
-    # create templates folder to hold index.html
-    create_templates_folder(app_name, import_css_js)
+        # create templates folder to hold index.html
+        create_templates_folder(app_name, import_css_js)
 
-    # create app.py in root directory(app_name)
-    create_app(app_name, debugger_mode)
+        # create app.py in root directory(app_name)
+        create_app(app_name, debugger_mode)
 
-    if (use_docker):
-        create_dockerfile(app_name)
+        if (use_docker):
+            create_dockerfile(app_name)
 
-    print(f"{bcolors.OKGREEN}Creation of directory success: %s" % app_name)
+        print(f"{bcolors.OKGREEN}Creation of directory success: %s" % app_name)
+
+    else:
+        print('Unknown argument detected! Please check the help section\n')
+        print_manual()
+        print(f"{bcolors.FAIL}Creation of directory failed: %s" % app_name)
+        sys.exit(1)
 else:
     if (app_name == '-h' or app_name == '--help'):
         print_manual()
