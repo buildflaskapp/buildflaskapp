@@ -27,10 +27,12 @@ if (is_name_valid(app_name)):
         if '-dB' in args or '--debug' in args:
             debugger_mode = True
             print("- Debugger mode on")
+
         if '-sS' in args or '--css-js' in args:
             import_css_js = True
-            print("- Css and Js mode on")
             create_static_folder(app_name)
+            print("- Css and Js mode on")
+        
         if '-dC' in args or '--docker' in args:
             use_docker = True
             print("- Docker mode on")
@@ -54,7 +56,6 @@ if (is_name_valid(app_name)):
             create_dockerfile(app_name)
 
         print(f"{bcolors.OKGREEN}Creation of directory success: %s" % app_name)
-
     else:
         print('Unknown argument! Please check the help section\n')
         print_manual()
