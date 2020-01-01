@@ -9,10 +9,12 @@ args = get_args()
 args.remove(app_name)
 valid_args_list = ['-dB', '--debug', '-sS', '--css-js', '-dC', '--docker']
 
+# validate name of app!!
 if (is_name_valid(app_name)):
+
     # validate all arguments first!!
     if(is_args_valid(args, valid_args_list)):
-
+    
         # Create folder named app_name
         create_dir(app_name)
 
@@ -33,7 +35,6 @@ if (is_name_valid(app_name)):
             print('  |__ cd %s' % app_name)
             print('  |__ \"docker-compose up -d\" to start app')
 
-        
         if (debugger_mode is False and import_css_js is False and use_docker is False):
             print("- Debugger mode off")
             print("- Css and Js mode off")
