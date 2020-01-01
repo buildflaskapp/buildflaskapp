@@ -1,19 +1,46 @@
 import os
 import sys
 import shutil
+from scripts.Colors import bcolors
+
 
 templates_folder = "/templates"
 static_folder = "/static"
 
+# get application name
+def get_app_name():
+  try:
+      app_name = sys.argv[1]
+  except:
+      print(f"{bcolors.WARNING}App name cannot be empty")
+      print(f"{bcolors.FAIL}Creation of directory failed: ")
+      sys.exit(1)
+  return app_name
+
+def isValid(app_name):
+  if ((app_name == 'app') or (app_name.startswith('-')) or ("." in app_name)):
+    return False
+  else:
+    return True
+
+#get all arguments passed
+def get_args():
+  args = sys.argv
+  return args
+
 # create directory for application
 def create_dir(app_name):
+  try:
     os.mkdir(app_name)
+  except FileExistsError:
+    print('Directory already exists')
+    print(f"{bcolors.FAIL}Creation of directory failed: %s" % app_name)
+    sys.exit(1)
 
 # create app.py in directory 'app_name'
-def create_app(app_name, addDebug):
+def create_app(app_name, debugger_mode):
     appPy = open(app_name + "/app.py", "w+")
-    if (addDebug):
-        print("-debug mode on")
+    if (debugger_mode):
         linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n\n" + "@app.route('/')\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run(debug=True, host='0.0.0.0')\n"
     else:
         linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n\n" + "@app.route('/')\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run(host='0.0.0.0')\n"
@@ -21,9 +48,9 @@ def create_app(app_name, addDebug):
     appPy.close()
 
 # create templates folder in directory
-def create_templates_folder(app_name, addStyleScript):
+def create_templates_folder(app_name, import_css_js):
     os.makedirs(app_name + templates_folder)
-    if (addStyleScript):
+    if (import_css_js):
         lineHtml ="""
 <!DOCTYPE html>
 <html>
@@ -56,7 +83,6 @@ def create_templates_folder(app_name, addStyleScript):
 # create static folder in directory
 def create_static_folder(app_name):
     # This is where stylesheets goes
-    print("-css & js mode on")
     os.makedirs(app_name + static_folder + "/stylesheet")
     cssFile = open(app_name + static_folder + "/stylesheet" + "/style.css", "w+")
     cssFile.close()
@@ -92,7 +118,3 @@ def create_dockerfile(app_name):
     linePython = "version: '3' \nservices: \n  web: \n    build: app \n    ports: \n      - '5000:5000'"
     dockercompose_yml.writelines([linePython])
     dockercompose_yml.close()
-
-    print("-dockerfile generated")
-    print('  --> cd %s' % app_name)
-    print('  --> \"docker-compose up -d\" to start app')
