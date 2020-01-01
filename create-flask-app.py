@@ -29,6 +29,7 @@ if (is_name_valid(app_name)):
         if '-sS' in args or '--css-js' in args:
             import_css_js = True
             print("- Css and Js mode on")
+            create_static_folder(app_name)
         if '-dC' in args or '--docker' in args:
             use_docker = True
             print("- Docker mode on")
@@ -40,23 +41,21 @@ if (is_name_valid(app_name)):
             print("- Css and Js mode off")
             print("- Docker mode off")
 
-        # if -sS enabled, creat static folder
-        if(import_css_js):
-            create_static_folder(app_name)
-
         # create templates folder to hold index.html
         create_templates_folder(app_name, import_css_js)
 
         # create app.py in root directory(app_name)
         create_app(app_name, debugger_mode)
 
+        # move application to docker container; 
         if (use_docker):
+            # generate Dockerfile
             create_dockerfile(app_name)
 
         print(f"{bcolors.OKGREEN}Creation of directory success: %s" % app_name)
 
     else:
-        print('Unknown argument detected! Please check the help section\n')
+        print('Unknown argument! Please check the help section\n')
         print_manual()
         print(f"{bcolors.FAIL}Creation of directory failed: %s" % app_name)
         sys.exit(1)
