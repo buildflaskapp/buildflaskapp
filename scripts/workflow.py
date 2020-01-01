@@ -19,7 +19,7 @@ def get_app_name():
 
 def isValid(app_name):
   # regex to accept only alphanumeric
-  if (bool(re.match(r"^[a-zA-Z0-9]*$", app_name))):
+  if (bool(re.match(r"^[a-zA-Z0-9\-]*$", app_name)) and (app_name.startswith('-') is False) and (app_name != "app")):
     return True
   else:
     return False
