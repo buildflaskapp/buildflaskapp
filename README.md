@@ -15,7 +15,7 @@ $ python3 create-flask-app.py app_name
 $ cd app_name
 $ python3 app.py
 ```
-![](./test/create-flask-app.gif)
+![](./demo/create-flask-app.gif)
 
 Open up http://localhost:5000/ to see your Hello World app.
 
