@@ -2,7 +2,7 @@ import os
 import sys
 import shutil
 from scripts.Colors import bcolors
-
+import re
 
 templates_folder = "/templates"
 static_folder = "/static"
@@ -18,10 +18,11 @@ def get_app_name():
   return app_name
 
 def isValid(app_name):
-  if ((app_name == 'app') or (app_name.startswith('-')) or ("." in app_name)):
-    return False
-  else:
+  # regex to accept only alphanumeric
+  if (bool(re.match(r"^[a-zA-Z0-9]*$", app_name))):
     return True
+  else:
+    return False
 
 #get all arguments passed
 def get_args():
