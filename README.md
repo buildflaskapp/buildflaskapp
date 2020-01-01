@@ -21,7 +21,9 @@ Open up http://localhost:5000/ to see your Hello World app.
 
 #### Set to path variable(Optional)
 ```
-$ cp create-flask-app.py /usr/local/bin/
+$ git clone https://github.com/kouul/create-flask-app
+$ cd create-flask-app
+$ cp scripts/add_to_path/create-flask-app.py /usr/local/bin/
 $ chmod +x /usr/local/bin/create-flask-app.py
 ```
 After setting environment variable, you should be able to run _create-flask-app.py_ from anywhere on your pc
