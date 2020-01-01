@@ -6,13 +6,14 @@ import re
 
 templates_folder = "/templates"
 static_folder = "/static"
+valid_args_list = ['-dB', '--debug', '-sS', '--css-js', '-dC', '--docker']
 
 # get application name
 def get_app_name():
   try:
       app_name = sys.argv[1]
   except:
-      print(f"{bcolors.WARNING}App name cannot be empty")
+      print(f"{bcolors.WARNING}App name cannot be empty. Please consider using --help")
       print(f"{bcolors.FAIL}Creation of directory failed: ")
       sys.exit(1)
   return app_name
@@ -30,7 +31,7 @@ def get_args():
   args.remove('create-flask-app.py')
   return args
 
-def is_args_valid(args, valid_args_list):
+def is_args_valid(args):
     valid_args =  all(arg in valid_args_list for arg in args)
     return valid_args
 

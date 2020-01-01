@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-from scripts.workflow import get_app_name, is_name_valid, get_args,  is_args_valid, create_dir, create_app, create_templates_folder, create_static_folder, create_dockerfile
+from scripts.workflow import get_app_name, is_name_valid
+from scripts.workflow import get_args,  is_args_valid
+from scripts.workflow import create_dir, create_app, create_templates_folder, create_static_folder, create_dockerfile
 from scripts.manual import print_manual
 from scripts.Colors import bcolors
 import sys
@@ -7,13 +9,12 @@ import sys
 app_name = get_app_name()
 args = get_args()
 args.remove(app_name)
-valid_args_list = ['-dB', '--debug', '-sS', '--css-js', '-dC', '--docker']
 
 # validate name of app!!
 if (is_name_valid(app_name)):
 
     # validate all arguments first!!
-    if(is_args_valid(args, valid_args_list)):
+    if(is_args_valid(args)):
     
         # Create folder named app_name
         create_dir(app_name)
