@@ -27,6 +27,7 @@ def isValid(app_name):
 #get all arguments passed
 def get_args():
   args = sys.argv
+  args.remove('create-flask-app.py')
   return args
 
 # create directory for application
