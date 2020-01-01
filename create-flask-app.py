@@ -29,6 +29,7 @@ if (isValid(app_name)):
     else:
         print("- Debugger mode off")
         print("- Css and Js mode off")
+        print("- Docker mode off")
 
     create_templates_folder(app_name, import_css_js)
     create_app(app_name, debugger_mode)
