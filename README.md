@@ -12,6 +12,7 @@ $ cd build-flask-app
 ```
 $ pip3 install build-flask-app
 ```
+Package @ PyPI repository: https://pypi.org/project/build-flask-app/
 
 ### Usage
 Ensure that you have flask installed on your environment. You can install flask using _pip3 install flask_.
