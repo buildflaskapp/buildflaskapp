@@ -10,7 +10,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='build-flask-app',  
-    version='0.0.3',
+    version='0.0.4',
     scripts=['build-flask-app'] ,
     author="Hans Maulloo",
     author_email="maulloohans@gmail.com",
@@ -20,8 +20,12 @@ setuptools.setup(
     url="https://github.com/kouul/create-flask-app",
     packages=setuptools.find_packages(),
     classifiers=[
+        "Development Status :: 2 - Pre-Alpha",
+        "Framework :: Flask",
+        "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
+        "License :: Freely Distributable",
         "Operating System :: OS Independent",
+        "Topic :: Software Development :: Code Generators"
     ],
 )
