@@ -5,6 +5,7 @@ An easy to use flask app generator that allows users to create flask apps simply
 To download the app generator, you can clone this repository to your local machine.
 ```
 $ git clone https://github.com/kouul/build-flask-app
+$ cd build-flask-app
 ```
 
 #### Install using pip
@@ -23,7 +24,7 @@ $ python3 app.py
 
 Open up http://localhost:5000/ to see your Hello World app.
 
-#### Set to path variable(Optional)
+#### Add to path variable(Optional)
 ```
 $ cp build-flask-app /usr/local/bin/
 $ chmod +x /usr/local/bin/build-flask-app.py
