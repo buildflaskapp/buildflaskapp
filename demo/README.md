@@ -1,3 +1,3 @@
 ### Flask App Generator
 
-![](create-flask-app.gif)
+![](build-flask-app.gif)
