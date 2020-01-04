@@ -26,23 +26,24 @@ $ python3 app.py
 Open up http://localhost:5000/ to see your Hello World app.
 
 ### Arguments
-- ##### Enable Debug Mode
-    You can enable debug mode on while creating your flask app by using the option **-dB**
-    ```
-    $ python3 build-flask-app.py app_name -dB
-    ```
+Below is a list of arguments you can pass when building your flask application.
+##### Enable Debug Mode
+You can enable debug mode on while creating your flask app by using the option **-dB**
+```
+$ python3 build-flask-app.py app_name -dB
+```
 
-- ##### Import style.css and app.js
-    You can import stylesheet and javascript file automatically while creating the app using **-sS** option
-    ```
-    $ python3 build-flask-app.py app_name -sS
-    ```
+##### Import style.css and app.js
+You can import stylesheet and javascript file automatically while creating the app using **-sS** option
+```
+$ python3 build-flask-app.py app_name -sS
+```
 
-- ##### Create Dockerfile and docker-compose script
-    You can push the app to a docker container instead of running it locally. Simply use **-dC** option. Please note that the image generated in Dockerfile is *python:3.7-alpine*. You might want to change this to the non-alpine version for big projects
-    ```
-    $ python3 build-flask-app.py app_name -dC
-    ```
+##### Create Dockerfile and docker-compose script
+You can push the app to a docker container instead of running it locally. Simply use **-dC** option. Please note that the image generated in Dockerfile is *python:3.7-alpine*. You might want to change this to the non-alpine version for big projects
+```
+$ python3 build-flask-app.py app_name -dC
+```
 
 
 ### Coming features
