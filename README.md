@@ -8,7 +8,7 @@ $ git clone https://github.com/kouul/build-flask-app
 $ cd build-flask-app
 ```
 
-#### Install using pip
+### Install using pip3
 ```
 $ pip3 install build-flask-app
 ```
@@ -24,13 +24,6 @@ $ python3 app.py
 ![](./demo/build-flask-app.gif)
 
 Open up http://localhost:5000/ to see your Hello World app.
-
-#### Add to path variable(Optional)
-```
-$ cp build-flask-app /usr/local/bin/
-$ chmod +x /usr/local/bin/build-flask-app.py
-```
-After setting environment variable, you should be able to run _build-flask-app.py_ from anywhere on your pc.
 
 ### Arguments
 - ##### Enable Debug Mode
