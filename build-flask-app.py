@@ -27,6 +27,7 @@ if (is_name_valid(app_name)):
         if '-dB' in args or '--debug' in args:
             debugger_mode = True
             print("- Debugger mode on")
+            print("  |__ added debug=True")
         else:
             print("- Debugger mode off")
 
@@ -34,6 +35,8 @@ if (is_name_valid(app_name)):
             import_css_js = True
             create_static_folder(app_name)
             print("- Css and Js mode on")
+            print("  |__ import static/stylesheet/style.css")
+            print("  |__ import static/js/app.css")
         else:
             print("- Css and Js mode off")
 
