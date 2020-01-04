@@ -3,7 +3,7 @@ from scripts.workflow import get_app_name, is_name_valid
 from scripts.workflow import get_args,  is_args_valid
 from scripts.workflow import create_dir, create_app, create_templates_folder, create_static_folder, create_dockerfile
 from scripts.manual import print_manual
-from scripts.Colors import bcolors
+from scripts.messages import empty_name, success_msg, failure_msg
 import sys
 
 app_name = get_app_name()
@@ -55,15 +55,14 @@ if (is_name_valid(app_name)):
             # generate Dockerfile
             create_dockerfile(app_name)
 
-        print(f"{bcolors.OKGREEN}Creation of directory success: %s" % app_name)
+        success_msg(app_name)
     else:
-        print('Unknown argument! Please check the help section\n')
+        print('Unknown argument detected! Please check the help section\n')
         print_manual()
-        print(f"{bcolors.FAIL}Creation of directory failed: %s" % app_name)
-        sys.exit(1)
+        failure_msg(app_name)
 else:
     if (app_name == '-h' or app_name == '--help'):
         print_manual()
     else:
-        print(f'{bcolors.WARNING}Please choose another app name')
-        print(f"{bcolors.FAIL}Creation of directory failed: %s" % app_name)
+        print('Please choose another app name')
+        failure_msg(app_name)
