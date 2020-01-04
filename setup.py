@@ -3,7 +3,7 @@ from scripts.workflow import get_app_name, is_name_valid
 from scripts.workflow import get_args,  is_args_valid
 from scripts.workflow import create_dir, create_app, create_templates_folder, create_static_folder, create_dockerfile
 from scripts.manual import print_manual
-from scripts.Colors import bcolors
+from scripts.messages import failure_msg, success_msg, empty_name
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
