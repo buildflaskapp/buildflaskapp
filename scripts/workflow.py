@@ -1,7 +1,7 @@
 import os
 import sys
 import shutil
-from scripts.Colors import bcolors
+from scripts.messages import empty_name, failure_msg, success_msg
 import re
 
 templates_folder = "/templates"
@@ -13,9 +13,8 @@ def get_app_name():
   try:
       app_name = sys.argv[1]
   except:
-      print(f"{bcolors.WARNING}App name cannot be empty. Please consider using --help")
-      print(f"{bcolors.FAIL}Creation of directory failed: ")
-      sys.exit(1)
+      print('App name cannot be empty. Please consider using --help')
+      empty_name()
   return app_name
 
 def is_name_valid(app_name):
@@ -40,9 +39,8 @@ def create_dir(app_name):
   try:
     os.mkdir(app_name)
   except FileExistsError:
-    print('Directory already exists')
-    print(f"{bcolors.FAIL}Creation of directory failed: %s" % app_name)
-    sys.exit(1)
+    print('Directory already exists: ' + app_name)
+    failure_msg(app_name)
 
 # create app.py in directory 'app_name'
 def create_app(app_name, debugger_mode):
