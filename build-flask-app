@@ -27,21 +27,22 @@ if (is_name_valid(app_name)):
         if '-dB' in args or '--debug' in args:
             debugger_mode = True
             print("- Debugger mode on")
+        else:
+            print("- Debugger mode off")
 
         if '-sS' in args or '--css-js' in args:
             import_css_js = True
             create_static_folder(app_name)
             print("- Css and Js mode on")
-        
+        else:
+            print("- Css and Js mode off")
+
         if '-dC' in args or '--docker' in args:
             use_docker = True
             print("- Docker mode on")
             print('  |__ cd %s' % app_name)
             print('  |__ \"docker-compose up -d\" to start app')
-
-        if (debugger_mode is False and import_css_js is False and use_docker is False):
-            print("- Debugger mode off")
-            print("- Css and Js mode off")
+        else:
             print("- Docker mode off")
 
         # create templates folder to hold index.html
