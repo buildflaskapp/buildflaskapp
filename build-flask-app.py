@@ -24,14 +24,14 @@ if (is_name_valid(app_name)):
         import_css_js = False
         use_docker = False
 
-        if '-dB' in args or '--debug' in args:
+        if '-d' in args or '--debugger' in args:
             debugger_mode = True
             print("- Debugger mode on")
             print("  |__ added debug=True")
         else:
             print("- Debugger mode off")
 
-        if '-sS' in args or '--css-js' in args:
+        if '-cj' in args or '--css-js' in args:
             import_css_js = True
             create_static_folder(app_name)
             print("- Css and Js mode on")
@@ -40,7 +40,7 @@ if (is_name_valid(app_name)):
         else:
             print("- Css and Js mode off")
 
-        if '-dC' in args or '--docker' in args:
+        if '-dc' in args or '--docker-container' in args:
             use_docker = True
             print("- Docker mode on")
             print('  |__ cd %s' % app_name)
