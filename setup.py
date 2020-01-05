@@ -10,14 +10,15 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='build-flask-app',  
-    version='0.0.5',
-    scripts=['build-flask-app'] ,
+    version='0.0.7',
+    scripts=['build-flask-app'],
     author="Hans Maulloo",
     author_email="maulloohans@gmail.com",
     description="A flask app generator package",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/kouul/create-flask-app",
+    install_requires=['colorama'],
     packages=setuptools.find_packages(),
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
