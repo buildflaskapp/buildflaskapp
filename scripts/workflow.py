@@ -6,7 +6,7 @@ import re
 
 templates_folder = "/templates"
 static_folder = "/static"
-valid_args_list = ['-d','--debugger', '-cj', '--css-js', '-dC', '--docker-container']
+valid_args_list = ['-d','--debugger', '-cj', '--css-js', '-dc', '--docker-container']
 
 # get application name
 def get_app_name():
