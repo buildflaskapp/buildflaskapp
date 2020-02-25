@@ -48,9 +48,9 @@ $ python3 build-flask-app.py app_name -dC
 
 ### Coming features
 - [ ] Manual(--help)
-- [x] Debug option on (-dB)
-- [x] Include Stylesheet and Script (-sS)
-- [x] Push app to docker container (-dC)
+- [x] Debug option on (-d)
+- [x] Include Stylesheet and Script (-cj)
+- [x] Push app to docker container (-dc)
 - [ ] Deploy on heroku (-hK)
 
 Feel free to create issue in case something is not working :)
