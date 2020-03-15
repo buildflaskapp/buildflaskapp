@@ -10,7 +10,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='build-flask-app',  
-    version='0.1.9',
+    version='0.1.10',
     scripts=['build-flask-app'],
     author="Hans Maulloo",
     author_email="maulloohans@gmail.com",

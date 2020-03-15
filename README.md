@@ -30,13 +30,31 @@ Below is a list of arguments you can pass when building your flask application.
 ##### Enable Debug Mode
 You can enable debug mode on while creating your flask app by using the option **-d** or **--debugger**
 ```
-$ python3 build-flask-app.py app_name -dB
+$ python3 build-flask-app.py app_name -d
 ```
 
 ##### Import style.css and app.js
 You can import stylesheet and javascript file automatically while creating the app using **-cj** or **--css-js** option
 ```
-$ python3 build-flask-app.py app_name -sS
+$ python3 build-flask-app.py app_name -cj
+```
+
+##### Import bootstrap CDN
+You can import bootstrap automatically via the CDN using **-bs** or **--bootstrap** option
+```
+$ python3 build-flask-app.py app_name -bs
+```
+
+##### Import jQuery CDN
+You can import jQuery automatically via the CDN using **-jq** or **--jquery** option
+```
+$ python3 build-flask-app.py app_name -jq
+```
+
+##### Import Gsap CDN
+You can import Gsap automatically via the CDN using **-gsap** or **--gsap** option
+```
+$ python3 build-flask-app.py app_name -gsap
 ```
 
 ##### Create Dockerfile and docker-compose script
