@@ -24,6 +24,7 @@ if (is_name_valid(app_name)):
         import_css_js = False
         import_bootstrap = False
         import_jquery = False
+        import_gsap = False
         use_docker = False
 
 
@@ -50,12 +51,19 @@ if (is_name_valid(app_name)):
         else:
             print("- Bootstrap mode off")
 
-        if '-bs' in args or '--bootstrap' in args:
+        if '-jq' in args or '--jquery' in args:
             import_jquery = True
             print("- jQuery mode on")
             print("  |__ import jQuery CDN in templates/index.html")
         else:
             print("- jQuery mode off")
+
+        if '-gsap' in args or '--gsap' in args:
+            import_gsap = True
+            print("- GSAP mode on")
+            print("  |__ import gsap CDN in templates/index.html")
+        else:
+            print("- GSAP mode off")
 
         if '-dc' in args or '--docker-container' in args:
             use_docker = True
@@ -71,8 +79,11 @@ if (is_name_valid(app_name)):
         if '-jq' in args or '--jQuery' in args:
             import_jquery = True
 
+        if '-gsap' in args or '--gsap' in args:
+            import_gsap = True
+
         # create templates folder to hold index.html
-        create_templates_folder(app_name, import_css_js, import_bootstrap, import_jquery)
+        create_templates_folder(app_name, import_css_js, import_bootstrap, import_jquery, import_gsap)
 
         # create app.py in root directory(app_name)
         create_app(app_name, debugger_mode)

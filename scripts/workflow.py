@@ -53,7 +53,7 @@ def create_app(app_name, debugger_mode):
     appPy.close()
 
 # create templates folder in directory
-def create_templates_folder(app_name, import_css_js, import_bootstrap, import_jquery):
+def create_templates_folder(app_name, import_css_js, import_bootstrap, import_jquery, import_gsap):
   os.makedirs(app_name + templates_folder)
   if (import_css_js):
     lineHtml ="""
@@ -89,7 +89,10 @@ def create_templates_folder(app_name, import_css_js, import_bootstrap, import_jq
     add_bootstrap(app_name, import_bootstrap)
 
   if (import_jquery):
-    add_jquery(app_name, import_bootstrap)
+    add_jquery(app_name, import_jquery)
+
+  if (import_gsap):
+    add_gsap(app_name, import_gsap)
 
 # create static folder in directory
 def create_static_folder(app_name):
@@ -152,6 +155,20 @@ def add_jquery(app_name, import_jquery):
     input_file = open(app_name + templates_folder + '/index.html', 'rt')
     lines = input_file.read()
     lines = lines.replace(body_tag, jquery_cdn + body_tag)
+    input_file.close()
+
+    input_file = open(app_name + templates_folder + '/index.html', 'wt')
+    input_file.write(lines)
+    input_file.close()
+
+def add_gsap(app_name, import_gsap):
+  if import_gsap:
+    gsap_cdn = '<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>\n'
+    body_tag = "</body>"
+
+    input_file = open(app_name + templates_folder + '/index.html', 'rt')
+    lines = input_file.read()
+    lines = lines.replace(body_tag, gsap_cdn + body_tag)
     input_file.close()
 
     input_file = open(app_name + templates_folder + '/index.html', 'wt')
