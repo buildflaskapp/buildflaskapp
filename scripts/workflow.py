@@ -53,7 +53,7 @@ def create_app(app_name, debugger_mode):
     appPy.close()
 
 # create templates folder in directory
-def create_templates_folder(app_name, import_css_js, import_bootstrap):
+def create_templates_folder(app_name, import_css_js, import_bootstrap, import_jquery):
   os.makedirs(app_name + templates_folder)
   if (import_css_js):
     lineHtml ="""
@@ -87,6 +87,9 @@ def create_templates_folder(app_name, import_css_js, import_bootstrap):
 
   if (import_bootstrap):
     add_bootstrap(app_name, import_bootstrap)
+
+  if (import_jquery):
+    add_jquery(app_name, import_bootstrap)
 
 # create static folder in directory
 def create_static_folder(app_name):
@@ -135,6 +138,20 @@ def add_bootstrap(app_name, import_bootstrap):
     input_file = open(app_name + templates_folder + '/index.html', 'rt')
     lines = input_file.read()
     lines = lines.replace(head_tag, bootstrap_cdn + head_tag)
+    input_file.close()
+
+    input_file = open(app_name + templates_folder + '/index.html', 'wt')
+    input_file.write(lines)
+    input_file.close()
+
+def add_jquery(app_name, import_jquery):
+  if import_jquery:
+    jquery_cdn = '<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>\n'
+    body_tag = "</body>"
+
+    input_file = open(app_name + templates_folder + '/index.html', 'rt')
+    lines = input_file.read()
+    lines = lines.replace(body_tag, jquery_cdn + body_tag)
     input_file.close()
 
     input_file = open(app_name + templates_folder + '/index.html', 'wt')
