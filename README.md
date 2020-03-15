@@ -27,10 +27,14 @@ Open up http://localhost:5000/ to see your Hello World app.
 
 ### Arguments
 
-First Header | Second Header
+Args | Usage | Definition
 ------------ | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
+-d | $ python3 build-flask-app.py app_name -d | debugger mode on
+-cj | $ python3 build-flask-app.py app_name -cj | import style.css and app.js
+-bs | $ python3 build-flask-app.py app_name -bs | import bootstrap cdn
+-jq | $ python3 build-flask-app.py app_name -jq | import jQuery cdn
+-gsap | $ python3 build-flask-app.py app_name -gsap | import GSAP cdn
+-dc | $ python3 build-flask-app.py app_name -dc | containerize app in docker
 
 Below is a list of arguments you can pass when building your flask application.
 ##### Enable Debug Mode
@@ -70,14 +74,14 @@ $ python3 build-flask-app.py app_name -dC
 ```
 
 
-### Coming features
-- [ ] Manual(--help)
+### Features
+- [x] Manual(--help)
 - [x] Debug option on (-d)
 - [x] Include Stylesheet and Script (-cj)
 - [x] Push app to docker container (-dc)
 - [x] Import bootstrap css library (-bs)
-- [ ] Import jQuery library (-jq)
-- [ ] Import gsap js framework (-gsap)
+- [x] Import jQuery library (-jq)
+- [x] Import gsap js framework (-gsap)
 - [ ] Deploy on heroku (-hK)
 
 Feel free to create issue in case something is not working :)
