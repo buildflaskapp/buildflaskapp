@@ -26,6 +26,12 @@ $ python3 app.py
 Open up http://localhost:5000/ to see your Hello World app.
 
 ### Arguments
+
+| Args  | Definition Usage |
+| ------------- | ------------- | Definition |
+| -d  | Debugger Mode on  | $ python3 build-flask-app.py app_name -d |
+| -cj  | Css and Javascript mode on  | $ python3 build-flask-app.py app_name -cj |
+
 Below is a list of arguments you can pass when building your flask application.
 ##### Enable Debug Mode
 You can enable debug mode on while creating your flask app by using the option **-d** or **--debugger**
