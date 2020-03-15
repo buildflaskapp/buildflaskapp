@@ -28,7 +28,7 @@ Open up http://localhost:5000/ to see your Hello World app.
 ### Arguments
 
 Args | Usage | Definition
------------- | -------------
+------------ | ------------- | -------------
 -d | $ python3 build-flask-app.py app_name -d | debugger mode on
 -cj | $ python3 build-flask-app.py app_name -cj | import style.css and app.js
 -bs | $ python3 build-flask-app.py app_name -bs | import bootstrap cdn
