@@ -6,7 +6,7 @@ import re
 
 templates_folder = "/templates"
 static_folder = "/static"
-valid_args_list = ['-d','--debugger', '-cj', '--css-js', '-dc', '--docker-container']
+valid_args_list = ['-d','--debugger', '-cj', '--css-js', '-dc', '--docker-container', '-bs', '--bootstrap', '-jq', '--jQuery', '-gsap', '--gsap']
 
 # get application name
 def get_app_name():
@@ -53,10 +53,10 @@ def create_app(app_name, debugger_mode):
     appPy.close()
 
 # create templates folder in directory
-def create_templates_folder(app_name, import_css_js):
-    os.makedirs(app_name + templates_folder)
-    if (import_css_js):
-        lineHtml ="""
+def create_templates_folder(app_name, import_css_js, import_bootstrap):
+  os.makedirs(app_name + templates_folder)
+  if (import_css_js):
+    lineHtml ="""
 <!DOCTYPE html>
 <html>
   <head>
@@ -69,8 +69,8 @@ def create_templates_folder(app_name, import_css_js):
   </body>
 </html>
 """
-    else:
-        lineHtml = """
+  else:
+    lineHtml = """
 <!DOCTYPE html>
 <html>
   <head>
@@ -81,9 +81,12 @@ def create_templates_folder(app_name, import_css_js):
   </body>
 </html>
 """
-    indexHtml = open(app_name + templates_folder + "/index.html", "w+")
-    indexHtml.writelines([lineHtml])
-    indexHtml.close()
+  indexHtml = open(app_name + templates_folder + "/index.html", "w+")
+  indexHtml.writelines([lineHtml])
+  indexHtml.close()
+
+  if (import_bootstrap):
+    add_bootstrap(app_name, import_bootstrap)
 
 # create static folder in directory
 def create_static_folder(app_name):
@@ -123,3 +126,17 @@ def create_dockerfile(app_name):
     linePython = "version: '3' \nservices: \n  web: \n    build: app \n    ports: \n      - '5000:5000'"
     dockercompose_yml.writelines([linePython])
     dockercompose_yml.close()
+
+def add_bootstrap(app_name, import_bootstrap):
+  if import_bootstrap:
+    bootstrap_cdn = '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">\n'
+    head_tag = "</head>"
+
+    input_file = open(app_name + templates_folder + '/index.html', 'rt')
+    lines = input_file.read()
+    lines = lines.replace(head_tag, bootstrap_cdn + head_tag)
+    input_file.close()
+
+    input_file = open(app_name + templates_folder + '/index.html', 'wt')
+    input_file.write(lines)
+    input_file.close()

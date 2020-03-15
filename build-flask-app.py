@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from scripts.workflow import get_app_name, is_name_valid
 from scripts.workflow import get_args,  is_args_valid
-from scripts.workflow import create_dir, create_app, create_templates_folder, create_static_folder, create_dockerfile
+from scripts.workflow import create_dir, create_app, create_templates_folder, create_static_folder, create_dockerfile, add_bootstrap
 from scripts.manual import print_manual
 from scripts.messages import empty_name, success_msg, failure_msg
 import sys
@@ -22,7 +22,9 @@ if (is_name_valid(app_name)):
         # Arguments
         debugger_mode = False
         import_css_js = False
+        import_bootstrap = False
         use_docker = False
+
 
         if '-d' in args or '--debugger' in args:
             debugger_mode = True
@@ -48,8 +50,11 @@ if (is_name_valid(app_name)):
         else:
             print("- Docker mode off")
 
+        if '-bs' in args or '--bootstrap' in args:
+            import_bootstrap = True
+
         # create templates folder to hold index.html
-        create_templates_folder(app_name, import_css_js)
+        create_templates_folder(app_name, import_css_js, import_bootstrap)
 
         # create app.py in root directory(app_name)
         create_app(app_name, debugger_mode)
