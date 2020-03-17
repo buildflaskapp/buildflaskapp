@@ -55,22 +55,7 @@ def create_app(app_name, debugger_mode):
 # create templates folder in directory
 def create_templates_folder(app_name, import_css_js, import_bootstrap, import_jquery, import_gsap):
   os.makedirs(app_name + templates_folder)
-  if (import_css_js):
-    lineHtml ="""
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Hello World</title>
-    <link rel='stylesheet' href='/static/stylesheet/style.css'>
-  </head>
-  <body>
-    <h1>Hello World!!</h1>
-    <script src='/static/js/app.js'></script>
-  </body>
-</html>
-"""
-  else:
-    lineHtml = """
+  lineHtml = """
 <!DOCTYPE html>
 <html>
   <head>
@@ -84,6 +69,9 @@ def create_templates_folder(app_name, import_css_js, import_bootstrap, import_jq
   indexHtml = open(app_name + templates_folder + "/index.html", "w+")
   indexHtml.writelines([lineHtml])
   indexHtml.close()
+
+  if (import_css_js):
+    add_css_js(app_name, import_css_js)
 
   if (import_bootstrap):
     add_bootstrap(app_name, import_bootstrap)
@@ -132,6 +120,31 @@ def create_dockerfile(app_name):
     linePython = "version: '3' \nservices: \n  web: \n    build: app \n    ports: \n      - '5000:5000'"
     dockercompose_yml.writelines([linePython])
     dockercompose_yml.close()
+
+def add_css_js(app_name, import_css_js):
+  if import_css_js:
+    stylesheet_string = "<link rel='stylesheet' href='/static/stylesheet/style.css'>"
+    js_string = "<script src='/static/js/app.js'></script>"
+    head_tag = "</head>"
+    body_tag = "</body>"
+
+    input_file = open(app_name + templates_folder + '/index.html', 'rt')
+    lines = input_file.read()
+    lines = lines.replace(head_tag, stylesheet_string + head_tag)
+    input_file.close()
+
+    input_file = open(app_name + templates_folder + '/index.html', 'wt')
+    input_file.write(lines)
+    input_file.close()
+
+    input_file = open(app_name + templates_folder + '/index.html', 'rt')
+    lines = input_file.read()
+    lines = lines.replace(body_tag, js_string + body_tag)
+    input_file.close()
+
+    input_file = open(app_name + templates_folder + '/index.html', 'wt')
+    input_file.write(lines)
+    input_file.close()
 
 def add_bootstrap(app_name, import_bootstrap):
   if import_bootstrap:

@@ -15,7 +15,7 @@ if (is_name_valid(app_name)):
 
     # validate all arguments first!!
     if(is_args_valid(args)):
-
+    
         # Create folder named app_name
         create_dir(app_name)
 
@@ -26,6 +26,7 @@ if (is_name_valid(app_name)):
         import_jquery = False
         import_gsap = False
         use_docker = False
+
 
         if '-d' in args or '--debugger' in args:
             debugger_mode = True
@@ -72,23 +73,13 @@ if (is_name_valid(app_name)):
         else:
             print("- Docker mode off")
 
-        if '-bs' in args or '--bootstrap' in args:
-            import_bootstrap = True
-
-        if '-jq' in args or '--jQuery' in args:
-            import_jquery = True
-
-        if '-gsap' in args or '--gsap' in args:
-            import_gsap = True
-
         # create templates folder to hold index.html
-        create_templates_folder(app_name, import_css_js,
-                                import_bootstrap, import_jquery, import_gsap)
+        create_templates_folder(app_name, import_css_js, import_bootstrap, import_jquery, import_gsap)
 
         # create app.py in root directory(app_name)
         create_app(app_name, debugger_mode)
 
-        # move application to docker container;
+        # move application to docker container; 
         if (use_docker):
             # generate Dockerfile
             create_dockerfile(app_name)

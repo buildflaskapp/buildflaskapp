@@ -73,15 +73,6 @@ if (is_name_valid(app_name)):
         else:
             print("- Docker mode off")
 
-        if '-bs' in args or '--bootstrap' in args:
-            import_bootstrap = True
-
-        if '-jq' in args or '--jQuery' in args:
-            import_jquery = True
-
-        if '-gsap' in args or '--gsap' in args:
-            import_gsap = True
-
         # create templates folder to hold index.html
         create_templates_folder(app_name, import_css_js, import_bootstrap, import_jquery, import_gsap)
 
