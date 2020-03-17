@@ -52,6 +52,19 @@ def create_app(app_name, debugger_mode):
     appPy.writelines([linePython])
     appPy.close()
 
+# create static folder in directory
+def create_static_folder(app_name):
+    # This is where stylesheets goes
+    os.makedirs(app_name + static_folder + "/stylesheet")
+    cssFile = open(app_name + static_folder + "/stylesheet" + "/style.css", "w+")
+    cssFile.close()
+
+    # This is where javascript goes
+    os.makedirs(app_name + static_folder + "/js")
+    jsFile = open(app_name + static_folder + "/js" + "/app.js", "w+")
+    jsFile.close()
+
+
 # create templates folder in directory
 def create_templates_folder(app_name, import_css_js, import_bootstrap, import_jquery, import_gsap):
   os.makedirs(app_name + templates_folder)
@@ -82,49 +95,10 @@ def create_templates_folder(app_name, import_css_js, import_bootstrap, import_jq
   if (import_gsap):
     add_gsap(app_name, import_gsap)
 
-# create static folder in directory
-def create_static_folder(app_name):
-    # This is where stylesheets goes
-    os.makedirs(app_name + static_folder + "/stylesheet")
-    cssFile = open(app_name + static_folder + "/stylesheet" + "/style.css", "w+")
-    cssFile.close()
-
-    # This is where javascript goes
-    os.makedirs(app_name + static_folder + "/js")
-    jsFile = open(app_name + static_folder + "/js" + "/app.js", "w+")
-    jsFile.close()
-
-# manage docker contents in app folder
-def create_dockerfile(app_name):
-    # move folders in app folder
-    os.makedirs(app_name + "/app")
-    files = os.listdir(app_name)
-    for f in files:
-        if f != 'app':
-            shutil.move(app_name + '/' + f, app_name + "/app")
-
-    # create requirements.txt
-    requirements_txt = open(app_name + "/app/requirements.txt", "w+")
-    linePython = "flask\n"
-    requirements_txt.writelines([linePython])
-    requirements_txt.close()
-
-    # create Dockerfile
-    dockerfile_txt = open(app_name + "/app/Dockerfile", "w+")
-    linePython = "FROM python:3.7-alpine \nWORKDIR /app \nCOPY . /app \nRUN pip3 install -r requirements.txt \nENTRYPOINT [\"python3\"] \nCMD [\"app.py\"]"
-    dockerfile_txt.writelines([linePython])
-    dockerfile_txt.close()
-
-    # create docker-compose.yml
-    dockercompose_yml = open(app_name + "/docker-compose.yml", "w+")
-    linePython = "version: '3' \nservices: \n  web: \n    build: app \n    ports: \n      - '5000:5000'"
-    dockercompose_yml.writelines([linePython])
-    dockercompose_yml.close()
-
 def add_css_js(app_name, import_css_js):
   if import_css_js:
-    stylesheet_string = "<link rel='stylesheet' href='/static/stylesheet/style.css'>"
-    js_string = "<script src='/static/js/app.js'></script>"
+    stylesheet_string = "<link rel='stylesheet' href='/static/stylesheet/style.css'>\n"
+    js_string = "<script src='/static/js/app.js'></script>\n"
     head_tag = "</head>"
     body_tag = "</body>"
 
@@ -187,3 +161,30 @@ def add_gsap(app_name, import_gsap):
     input_file = open(app_name + templates_folder + '/index.html', 'wt')
     input_file.write(lines)
     input_file.close()
+
+# manage docker contents in app folder
+def create_dockerfile(app_name):
+    # move folders in app folder
+    os.makedirs(app_name + "/app")
+    files = os.listdir(app_name)
+    for f in files:
+        if f != 'app':
+            shutil.move(app_name + '/' + f, app_name + "/app")
+
+    # create requirements.txt
+    requirements_txt = open(app_name + "/app/requirements.txt", "w+")
+    linePython = "flask\n"
+    requirements_txt.writelines([linePython])
+    requirements_txt.close()
+
+    # create Dockerfile
+    dockerfile_txt = open(app_name + "/app/Dockerfile", "w+")
+    linePython = "FROM python:3.7-alpine \nWORKDIR /app \nCOPY . /app \nRUN pip3 install -r requirements.txt \nENTRYPOINT [\"python3\"] \nCMD [\"app.py\"]"
+    dockerfile_txt.writelines([linePython])
+    dockerfile_txt.close()
+
+    # create docker-compose.yml
+    dockercompose_yml = open(app_name + "/docker-compose.yml", "w+")
+    linePython = "version: '3' \nservices: \n  web: \n    build: app \n    ports: \n      - '5000:5000'"
+    dockercompose_yml.writelines([linePython])
+    dockercompose_yml.close()
