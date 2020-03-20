@@ -68,7 +68,7 @@ You can import Gsap automatically via the CDN using **-gsap** or **--gsap** opti
 $ python3 build-flask-app.py app_name -gsap
 ```
 
-##### Import Gsap CDN
+##### Import Font Awesome CDN
 You can import Font Awesome automatically via the CDN using **-fa** or **--font-awesome** option
 ```
 $ python3 build-flask-app.py app_name -fa
