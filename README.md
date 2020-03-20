@@ -89,6 +89,7 @@ $ python3 build-flask-app.py app_name -dC
 - [x] Import bootstrap css library (-bs)
 - [x] Import jQuery library (-jq)
 - [x] Import gsap js framework (-gsap)
+- [x] Import font awesome library (-fa)
 - [ ] Deploy on heroku (-hK)
 
 Feel free to create issue in case something is not working :)
