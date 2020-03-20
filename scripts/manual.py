@@ -6,5 +6,6 @@ def print_manual():
     print('  -bs or --bootstrap \n\t Import bootstrap')
     print('  -jq or --jQuery \n\t Import jQuery')
     print('  -gsap or --gsap \n\tImport Gsap')
+    print('  -fa or --font-awesome \n\tImport Font awesome')
     print('  -dc or --docker-container \n\t Generate Dockerfile and docker-compose.yml')
     print('  -h or --help \n\t Print help')

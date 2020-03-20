@@ -34,6 +34,7 @@ Args | Usage | Definition
 -bs | $ python3 build-flask-app.py app_name -bs | import bootstrap cdn
 -jq | $ python3 build-flask-app.py app_name -jq | import jQuery cdn
 -gsap | $ python3 build-flask-app.py app_name -gsap | import GSAP cdn
+-fa | $ python3 build-flask-app.py app_name -fa | import Font Awesome cdn
 -dc | $ python3 build-flask-app.py app_name -dc | containerize app in docker
 
 Below is a list of arguments you can pass when building your flask application.
@@ -65,6 +66,12 @@ $ python3 build-flask-app.py app_name -jq
 You can import Gsap automatically via the CDN using **-gsap** or **--gsap** option
 ```
 $ python3 build-flask-app.py app_name -gsap
+```
+
+##### Import Gsap CDN
+You can import Font Awesome automatically via the CDN using **-fa** or **--font-awesome** option
+```
+$ python3 build-flask-app.py app_name -fa
 ```
 
 ##### Create Dockerfile and docker-compose script
