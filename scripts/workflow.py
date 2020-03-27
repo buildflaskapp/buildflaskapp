@@ -202,6 +202,6 @@ def create_dockerfile(app_name):
 
     # create docker-compose.yml
     dockercompose_yml = open(app_name + "/docker-compose.yml", "w+")
-    linePython = "version: '3' \nservices: \n  web: \n    build: app \n    ports: \n      - '5000:5000'"
+    linePython = "version: '3.7' \nservices: \n  web: \n    build: app \n    ports: \n      - '5000:5000'"
     dockercompose_yml.writelines([linePython])
     dockercompose_yml.close()
