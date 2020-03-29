@@ -16,7 +16,7 @@ if (is_name_valid(app_name)):
     # validate all arguments first!!
     if(is_args_valid(args)):
     
-        # Create folder named app_name
+        # Create folder with app_name
         create_dir(app_name)
 
         # Arguments
@@ -29,6 +29,7 @@ if (is_name_valid(app_name)):
         use_docker = False
 
 
+    # Checking which argument has been input
         if '-d' in args or '--debugger' in args:
             debugger_mode = True
             print("- Debugger mode on")
