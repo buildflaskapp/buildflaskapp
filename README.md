@@ -88,9 +88,10 @@ $ python3 build-flask-app.py app_name -dC
 - [x] Push app to docker container (-dc)
 - [x] Import bootstrap css library (-bs)
 - [x] Import jQuery library (-jq)
-- [x] Import gsap js framework (-gsap)
+- [x] Import gsap js library (-gsap)
 - [x] Import font awesome library (-fa)
 - [ ] Import zurb foundations library (-zb)
+- [ ] Import angular js library (-an)
 - [ ] Deploy on heroku (-hK)
 
 Feel free to create issue in case something is not working :)
