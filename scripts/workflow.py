@@ -6,7 +6,7 @@ import re
 
 templates_folder = "/templates"
 static_folder = "/static"
-valid_args_list = ['-d','--debugger', '-cj', '--css-js', '-dc', '--docker-container', '-bs', '--bootstrap', '-jq', '--jQuery', '-gsap', '--gsap', '-fa', '--font-awesome']
+valid_args_list = ['-d','--debugger', '-cj', '--css-js', '-dc', '--docker-container', '-bs', '--bootstrap', '-jq', '--jQuery', '-gsap', '--gsap', '-fa', '--font-awesome', '-zb', '--zurb-foundation', '-ng', '--angularjs']
 
 # get application name
 def get_app_name():
@@ -66,7 +66,7 @@ def create_static_folder(app_name):
 
 
 # create templates folder in directory
-def create_templates_folder(app_name, import_css_js, import_bootstrap, import_jquery, import_gsap, import_font_awesome):
+def create_templates_folder(app_name, import_css_js, import_bootstrap, import_jquery, import_gsap, import_font_awesome, import_angular_js):
   os.makedirs(app_name + templates_folder)
   lineHtml = """
 <!DOCTYPE html>
@@ -97,6 +97,9 @@ def create_templates_folder(app_name, import_css_js, import_bootstrap, import_jq
 
   if (import_font_awesome):
     add_font_awesome(app_name, import_font_awesome)
+
+  if (import_angular_js):
+    add_angular_js(app_name, import_angular_js)
 
 def add_css_js(app_name, import_css_js):
   if import_css_js:
@@ -173,6 +176,20 @@ def add_font_awesome(app_name, import_font_awesome):
     input_file = open(app_name + templates_folder + '/index.html', 'rt')
     lines = input_file.read()
     lines = lines.replace(head_tag, font_awesome_cdn + head_tag)
+    input_file.close()
+
+    input_file = open(app_name + templates_folder + '/index.html', 'wt')
+    input_file.write(lines)
+    input_file.close()
+
+def add_angular_js(app_name, import_angular_js):
+  if import_angular_js:
+    angularjs_cdn = '<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>'
+    head_tag = "</head>"
+
+    input_file = open(app_name + templates_folder + '/index.html', 'rt')
+    lines = input_file.read()
+    lines = lines.replace(head_tag, angularjs_cdn + head_tag)
     input_file.close()
 
     input_file = open(app_name + templates_folder + '/index.html', 'wt')
