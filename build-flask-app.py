@@ -26,6 +26,7 @@ if (is_name_valid(app_name)):
         import_jquery = False
         import_gsap = False
         import_font_awesome = False
+        import_angular_js = False
         use_docker = False
 
 
@@ -74,6 +75,13 @@ if (is_name_valid(app_name)):
         else:
             print("- Font awesome mode off")
 
+        if '-ng' in args or '--angular-js' in args:
+            import_angular_js = True
+            print("- Angular JS mode on")
+            print("  |__ import angularJS CDN in templates/index.html")
+        else:
+            print("- AngularJS mode off")
+
         if '-dc' in args or '--docker-container' in args:
             use_docker = True
             print("- Docker mode on")
@@ -83,7 +91,7 @@ if (is_name_valid(app_name)):
             print("- Docker mode off")
 
         # create templates folder to hold index.html
-        create_templates_folder(app_name, import_css_js, import_bootstrap, import_jquery, import_gsap, import_font_awesome)
+        create_templates_folder(app_name, import_css_js, import_bootstrap, import_jquery, import_gsap, import_font_awesome, import_angular_js)
 
         # create app.py in root directory(app_name)
         create_app(app_name, debugger_mode)
