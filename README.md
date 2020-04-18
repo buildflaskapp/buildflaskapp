@@ -1,5 +1,11 @@
 ## Build Flask App
-An easy to use flask app generator that allows users to create flask apps simply by running one command. You can check out the official website [here](https://build-flask-app.kouul.website)
+
+<table border="0">
+ <tr>
+    <td>![](./img/logo.png)</td>
+    <td>An easy to use flask app generator that allows users to create flask apps simply by running one command. You can check out the official website [here](https://build-flask-app.kouul.website)</td>
+ </tr>
+</table>
 
 ### Install using source code
 To download the app generator, you can clone this repository to your local machine.
