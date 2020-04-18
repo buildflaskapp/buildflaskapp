@@ -3,7 +3,7 @@
 An easy to use flask app generator that allows users to create flask apps simply by running one command. You can check out the official website [here](https://build-flask-app.kouul.website).
 
 <p align="center">
-![](./img/logo.png)
+<img src="./img/logo.png">
 </p>
 
 ### Install using source code
