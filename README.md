@@ -1,7 +1,5 @@
 ## Build Flask App
 
-First Header | Second Header
------------- | -------------
 ![](./img/logo.png) | An easy to use flask app generator that allows users to create flask apps simply by running one command. You can check out the official website [here](https://build-flask-app.kouul.website) 
 
 ### Install using source code
