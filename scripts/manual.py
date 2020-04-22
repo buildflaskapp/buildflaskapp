@@ -8,5 +8,6 @@ def print_manual():
     print('  -gsap or --gsap \n\tImport Gsap')
     print('  -fa or --font-awesome \n\tImport Font awesome')
     print('  -dc or --docker-container \n\t Generate Dockerfile and docker-compose.yml')
+    print('  -v or --version \n\t Print version\n')
     print('  -h or --help \n\t Print help\n')
     print('Example: build-flask-app hello-world -d -bs\n')
