@@ -4,13 +4,15 @@ from scripts.workflow import get_args,  is_args_valid
 from scripts.workflow import create_dir, create_app, create_templates_folder, create_static_folder, create_dockerfile
 from scripts.manual import print_manual
 from scripts.messages import failure_msg, success_msg, empty_name
+from scripts.__version__ import __version__
+
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name='build-flask-app',  
-    version='0.1.14',
+    version=__version__,
     scripts=['build-flask-app'],
     author="Hans Maulloo",
     author_email="maulloohans@gmail.com",
