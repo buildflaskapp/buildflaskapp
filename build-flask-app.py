@@ -4,6 +4,7 @@ from scripts.workflow import get_args,  is_args_valid
 from scripts.workflow import create_dir, create_app, create_templates_folder, create_static_folder, create_dockerfile
 from scripts.manual import print_manual
 from scripts.messages import empty_name, success_msg, failure_msg
+from scripts.__version__ import __version__
 import sys
 
 app_name = get_app_name()
@@ -101,6 +102,8 @@ if (is_name_valid(app_name)):
 else:
     if (app_name == '-h' or app_name == '--help'):
         print_manual()
+    elif (app_name == '-v' or app_name == '--version'):
+        print("v{}".format(__version__))
     else:
         print('Please choose another app name')
         failure_msg(app_name)
