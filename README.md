@@ -100,3 +100,7 @@ $ python3 build-flask-app.py app_name -dC
 - [ ] Deploy on heroku (-hK)
 
 Feel free to create issue in case something is not working :)
+
+<p align="center">
+<img src="./img/logo.png">
+</p>
