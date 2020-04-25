@@ -35,6 +35,7 @@ Open up http://localhost:5000/ to see your Hello World app.
 Args | Usage | Definition
 ------------ | ------------- | -------------
 -d | $ python3 build-flask-app.py app_name -d | debugger mode on
+-sl3 | $ python3 build-flask-app.py app_name -sl3 | sqlite3 mode on
 -cj | $ python3 build-flask-app.py app_name -cj | import style.css and app.js
 -bs | $ python3 build-flask-app.py app_name -bs | import bootstrap cdn
 -jq | $ python3 build-flask-app.py app_name -jq | import jQuery cdn
@@ -47,6 +48,12 @@ Below is a list of arguments you can pass when building your flask application.
 You can enable debug mode on while creating your flask app by using the option **-d** or **--debugger**
 ```
 $ python3 build-flask-app.py app_name -d
+```
+
+##### Enable SQLite3 Mode
+You can set sqlite3 configuration while creating your flask app by using the option **-sl3** or **--sqlite3**
+```
+$ python3 build-flask-app.py app_name -sl3
 ```
 
 ##### Import style.css and app.js
@@ -89,6 +96,7 @@ $ python3 build-flask-app.py app_name -dC
 ### Features
 - [x] Manual(--help)
 - [x] Debug option on (-d)
+- [x] SQLite3 option on (-sl3)
 - [x] Include Stylesheet and Script (-cj)
 - [x] Push app to docker container (-dc)
 - [x] Import bootstrap css library (-bs)
