@@ -22,6 +22,7 @@ if (is_name_valid(app_name)):
 
         # Arguments
         debugger_mode = False
+        sqlite3_mode = False
         import_css_js = False
         import_bootstrap = False
         import_jquery = False
@@ -74,6 +75,13 @@ if (is_name_valid(app_name)):
             print("  |__ import font awesome CDN in templates/index.html")
         else:
             print("- Font awesome mode off")
+        
+        if '-sl3' in args or '--sqlite3' in args:
+            sqlite3_mode = True
+            print("- Sql Lite 3 mode on")
+            print("  |__ import sqlite3")
+        else:
+            print("- Sql Lite 3 mode off")
 
         if '-dc' in args or '--docker-container' in args:
             use_docker = True
@@ -87,7 +95,7 @@ if (is_name_valid(app_name)):
         create_templates_folder(app_name, import_css_js, import_bootstrap, import_jquery, import_gsap, import_font_awesome)
 
         # create app.py in root directory(app_name)
-        create_app(app_name, debugger_mode)
+        create_app(app_name, debugger_mode, sqlite3_mode)
 
         # move application to docker container; 
         if (use_docker):
