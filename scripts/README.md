@@ -8,16 +8,16 @@ An easy to use flask app generator that allows users to create flask apps simply
 
 Below you will find how the functions are organised and the functions name are pretty much self-explanatory!
 
-## Workflow.py:
-### Validate name of folder to be created
+### Workflow.py:
+##### Validate name of folder to be created
 - get_app_name
 - is_name_valid
 
-### Validate arguments passed in request
+##### Validate arguments passed in request
 - get_args
 - is_args_valid
 
-### Create folder
+##### Create folder
 - create_dir
   - create_app
     - set_debug_on
