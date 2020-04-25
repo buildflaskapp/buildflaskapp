@@ -3,6 +3,7 @@ def print_manual():
 
     print('Options and arguments available for creating flask apps:')
     print('  -d or --debugger \n\t Enables debugger mode on')
+    print('  -sl3 or --sqlite3 \n\t Enables sqlite3 mode on')
     print('  -cj or --css-js \n\t Import stylesheet and script tag')
     print('  -bs or --bootstrap \n\t Import bootstrap')
     print('  -jq or --jQuery \n\t Import jQuery')
