@@ -4,6 +4,7 @@ from scripts.workflow import get_args,  is_args_valid
 from scripts.workflow import create_dir, create_app, create_templates_folder, create_static_folder, create_dockerfile
 from scripts.manual import print_manual
 from scripts.messages import empty_name, success_msg, failure_msg
+from scripts.workflow import create_requirements_txt
 from scripts.__version__ import __version__
 import sys
 
@@ -21,6 +22,7 @@ if (is_name_valid(app_name)):
         create_dir(app_name)
 
         # Arguments
+        flask_mode = True
         debugger_mode = False
         sqlite3_mode = False
         import_css_js = False
@@ -97,12 +99,15 @@ if (is_name_valid(app_name)):
         # create app.py in root directory(app_name)
         create_app(app_name, debugger_mode, sqlite3_mode)
 
+        # create a requirements.txt file for all modules
+
         # move application to docker container; 
         if (use_docker):
             # generate Dockerfile
             create_dockerfile(app_name)
 
         success_msg(app_name)
+        create_requirements_txt(app_name, flask_mode, sqlite3_mode)
     else:
         print('Unknown argument detected! Please check the help section\n')
         print_manual()

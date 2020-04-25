@@ -6,7 +6,7 @@ import re
 
 templates_folder = "/templates"
 static_folder = "/static"
-valid_args_list = ['-d','--debugger', '-cj', '--css-js', '-dc', '--docker-container', '-bs', '--bootstrap', '-jq', '--jQuery', '-gsap', '--gsap', '-fa', '--font-awesome']
+valid_args_list = ['-d','--debugger', '-cj', '--css-js', '-dc', '--docker-container', '-bs', '--bootstrap', '-jq', '--jQuery', '-gsap', '--gsap', '-fa', '--font-awesome', '-sl3', '--sqlite3']
 
 # get application name
 def get_app_name():
@@ -63,15 +63,46 @@ if __name__ == '__main__':
     if (debugger_mode):
       set_debug_on(app_name, debugger_mode)
 
-    # if(sqlite3_mode):
+    if(sqlite3_mode):
+      set_sqlite3_mode(app_name, sqlite3_mode)
 
 def set_debug_on(app_name, debugger_mode):
   if debugger_mode:
     debug_on_string = 'app.run(debug=True)'
     app_run_string = 'app.run()'
+
     app_py_file = open(app_name + '/app.py', 'rt')
     lines = app_py_file.read()
     lines = lines.replace(app_run_string, debug_on_string)
+    app_py_file.close()
+
+    app_py_file = open(app_name + '/app.py', 'wt')
+    app_py_file.write(lines)
+    app_py_file.close()
+
+def set_sqlite3_mode(app_name, sqlite3_mode):
+  if sqlite3_mode:
+    app_py_file = open(app_name + '/app.py', 'rt')
+    lines = app_py_file.read()
+    import_flask_string = 'from flask import Flask, render_template'
+    import_sqlite_string = 'from flask_sqlalchemy import SQLAlchemy'
+    lines = lines.replace(import_flask_string, import_flask_string + '\n' + import_sqlite_string)
+    app_py_file.close()
+
+    app_py_file = open(app_name + '/app.py', 'wt')
+    app_py_file.write(lines)
+    app_py_file.close()
+
+    app_py_file = open(app_name + '/app.py', 'rt')
+    lines = app_py_file.read()
+    app_instance = 'app = Flask(__name__)'
+    app_sqlite3_config_track_modif = "app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False"
+    app_sqlite3_config = "app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test-db.sqlite3'\ndb = SQLAlchemy(app)"
+    lines = lines.replace(app_instance, app_instance + '\n' + app_sqlite3_config_track_modif + '\n' + app_sqlite3_config)
+    app_py_file.close()
+
+    app_py_file = open(app_name + '/app.py', 'wt')
+    app_py_file.write(lines)
     app_py_file.close()
 
 # create static folder in directory
@@ -227,3 +258,18 @@ def create_dockerfile(app_name):
     linePython = "version: '3.7' \nservices: \n  web: \n    build: app \n    ports: \n      - '5000:5000'"
     dockercompose_yml.writelines([linePython])
     dockercompose_yml.close()
+
+def create_requirements_txt(app_name, flask_mode, sqlite3_mode):
+  requirements_txt_file = open(app_name + '/requirements.txt', 'a')
+  if (flask_mode):
+    add_to_requirements(app_name, "flask")
+  
+  if (sqlite3_mode):
+    add_to_requirements(app_name, "Flask-SQLAlchemy")
+
+  requirements_txt_file.close()
+
+def add_to_requirements(app_name, module_name):
+  requirements_txt_file = open(app_name + '/requirements.txt', 'a')
+  requirements_txt_file.write(module_name + '\n')
+  requirements_txt_file.close()
