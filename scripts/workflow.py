@@ -43,14 +43,36 @@ def create_dir(app_name):
     failure_msg(app_name)
 
 # create app.py in directory 'app_name'
-def create_app(app_name, debugger_mode):
-    appPy = open(app_name + "/app.py", "w+")
+def create_app(app_name, debugger_mode, sqlite3_mode):
+    app_py_file = open(app_name + "/app.py", "w+")
+    app_py = """
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+  return 'Hello World'
+
+if __name__ == '__main__':
+  app.run()
+"""
+    app_py_file.writelines([app_py])
+    app_py_file.close()
+
     if (debugger_mode):
-        linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n\n" + "@app.route('/')\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run(debug=True, host='0.0.0.0')\n"
-    else:
-        linePython = "from flask import Flask, render_template\n" + "app = Flask(__name__)\n\n" + "@app.route('/')\n" + "def hello():\n" + "\treturn render_template('index.html')\n\n" + "if __name__ == '__main__':\n" + "\tapp.run(host='0.0.0.0')\n"
-    appPy.writelines([linePython])
-    appPy.close()
+      set_debug_on(app_name, debugger_mode)
+
+    # if(sqlite3_mode):
+
+def set_debug_on(app_name, debugger_mode):
+  if debugger_mode:
+    debug_on_string = 'app.run(debug=True)'
+    app_run_string = 'app.run()'
+    app_py_file = open(app_name + '/app.py', 'rt')
+    lines = app_py_file.read()
+    lines = lines.replace(app_run_string, debug_on_string)
+    app_py_file.close()
 
 # create static folder in directory
 def create_static_folder(app_name):
