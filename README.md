@@ -6,7 +6,7 @@ An easy to use flask app generator that allows users to create flask apps simply
 <img src="./img/logo.gif">
 </p>
 
-### Install using pip3
+### Install using pip/pip3
 ```
 $ pip3 install buildflaskapp
 ```
