@@ -1,7 +1,7 @@
 import os
 import sys
 import shutil
-from scripts.messages import empty_name, failure_msg, success_msg
+from buildflaskapp.scripts.messages import empty_name, failure_msg, success_msg
 import re
 
 templates_folder = "/templates"
@@ -26,13 +26,12 @@ def is_name_valid(app_name):
 
 #get all arguments passed
 def get_args():
-  args = sys.argv
-  args.pop(0)
+  args = sys.argv[2:]
   return args
 
 def is_args_valid(args):
-    valid_args =  all(arg in valid_args_list for arg in args)
-    return valid_args
+  valid_args =  all(arg in valid_args_list for arg in args)
+  return valid_args
 
 # create directory for application
 def create_dir(app_name):

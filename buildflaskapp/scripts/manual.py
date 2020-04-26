@@ -1,5 +1,5 @@
 def print_manual():
-    print('Usage: build-flask-app [app_name] -[arguments]\n')
+    print('Usage: buildflaskapp [app_name] -[arguments]\n')
 
     print('Options and arguments available for creating flask apps:')
     print('  -d or --debugger \n\t Enables debugger mode on')
