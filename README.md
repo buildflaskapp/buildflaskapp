@@ -27,62 +27,62 @@ Open up http://localhost:5000/ to see your Hello World app.
 
 Args | Usage | Definition
 ------------ | ------------- | -------------
--d | $ python3 buildflaskapp.py app_name -d | debugger mode on
--sl3 | $ python3 buildflaskapp.py app_name -sl3 | sqlite3 mode on
--cj | $ python3 buildflaskapp.py app_name -cj | import style.css and app.js
--bs | $ python3 buildflaskapp.py app_name -bs | import bootstrap cdn
--jq | $ python3 buildflaskapp.py app_name -jq | import jQuery cdn
--gsap | $ python3 buildflaskapp.py app_name -gsap | import GSAP cdn
--fa | $ python3 buildflaskapp.py app_name -fa | import Font Awesome cdn
--dc | $ python3 buildflaskapp.py app_name -dc | containerize app in docker
+-d | $ buildflaskapp.py app_name -d | debugger mode on
+-sl3 | $ buildflaskapp.py app_name -sl3 | sqlite3 mode on
+-cj | $ buildflaskapp.py app_name -cj | import style.css and app.js
+-bs | $ buildflaskapp.py app_name -bs | import bootstrap cdn
+-jq | $ buildflaskapp.py app_name -jq | import jQuery cdn
+-gsap | $ buildflaskapp.py app_name -gsap | import GSAP cdn
+-fa | $ buildflaskapp.py app_name -fa | import Font Awesome cdn
+-dc | $ buildflaskapp.py app_name -dc | containerize app in docker
 
 Below is a list of arguments you can pass when building your flask application.
 ##### Enable Debug Mode
 You can enable debug mode on while creating your flask app by using the option **-d** or **--debugger**
 ```
-$ python3 buildflaskapp.py app_name -d
+$ buildflaskapp.py app_name -d
 ```
 
 ##### Enable SQLite3 Mode
 You can set sqlite3 configuration while creating your flask app by using the option **-sl3** or **--sqlite3**
 ```
-$ python3 buildflaskapp.py app_name -sl3
+$ buildflaskapp.py app_name -sl3
 ```
 
 ##### Import style.css and app.js
 You can import stylesheet and javascript file automatically while creating the app using **-cj** or **--css-js** option
 ```
-$ python3 buildflaskapp.py app_name -cj
+$ buildflaskapp.py app_name -cj
 ```
 
 ##### Import bootstrap CDN
 You can import bootstrap automatically via the CDN using **-bs** or **--bootstrap** option
 ```
-$ python3 buildflaskapp.py app_name -bs
+$ buildflaskapp.py app_name -bs
 ```
 
 ##### Import jQuery CDN
 You can import jQuery automatically via the CDN using **-jq** or **--jquery** option
 ```
-$ python3 buildflaskapp.py app_name -jq
+$ buildflaskapp.py app_name -jq
 ```
 
 ##### Import Gsap CDN
 You can import Gsap automatically via the CDN using **-gsap** or **--gsap** option
 ```
-$ python3 buildflaskapp.py app_name -gsap
+$ buildflaskapp.py app_name -gsap
 ```
 
 ##### Import Font Awesome CDN
 You can import Font Awesome automatically via the CDN using **-fa** or **--font-awesome** option
 ```
-$ python3 buildflaskapp.py app_name -fa
+$ buildflaskapp.py app_name -fa
 ```
 
 ##### Create Dockerfile and docker-compose script
 You can push the app to a docker container instead of running it locally. Simply use **-dc** or **--docker-container** option. Please note that the image generated in Dockerfile is *python:3.7-alpine*. You might want to change this to the non-alpine version for big projects
 ```
-$ python3 buildflaskapp.py app_name -dC
+$ buildflaskapp.py app_name -dC
 ```
 
 

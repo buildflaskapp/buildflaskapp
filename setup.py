@@ -20,7 +20,8 @@ setuptools.setup(
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
         "License :: Freely Distributable",
-        "Operating System :: OS Independent",
+        "Operating System :: Microsoft :: Windows",
+        "Operating System :: POSIX :: Linux",
         "Topic :: Software Development :: Code Generators"
     ],
     entry_points={"console_scripts": ["buildflaskapp=buildflaskapp.buildflaskapp:main"]}
