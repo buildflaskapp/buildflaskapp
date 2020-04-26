@@ -12,7 +12,7 @@ setuptools.setup(
     description="A flask app generator package",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/kouul/buildflaskapp",
+    url="https://github.com/askyourkode/buildflaskapp",
     packages=setuptools.find_packages(),
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
