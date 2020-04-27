@@ -32,7 +32,7 @@ def main():
             use_docker = False
 
 
-        # Checking which argument has been input
+            # Checking which argument has been input
             if '-d' in args or '--debugger' in args:
                 debugger_mode = True
                 print("- Debugger mode on")

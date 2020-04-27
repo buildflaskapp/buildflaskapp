@@ -3,7 +3,7 @@
 An easy to use flask app generator that allows users to create flask apps simply by running one command. You can check out the official website [here](https://buildflaskapp.kouul.website).
 
 <p align="center">
-<img src="./img/logo.gif">
+<img src="./buildflaskapp/img/logo.gif">
 </p>
 
 ### Install using pip/pip3
@@ -19,7 +19,7 @@ $ buildflaskapp app_name
 $ cd app_name
 $ python3 app.py
 ```
-![](./demo/buildflaskapp.gif)
+![](./buildflaskapp/demo/buildflaskapp.gif)
 
 Open up http://localhost:5000/ to see your Hello World app.
 
@@ -103,5 +103,5 @@ $ buildflaskapp.py app_name -dC
 Feel free to create issue in case something is not working :)
 
 <p align="center">
-<img src="./img/logo.png">
+<img src="./buildflaskapp/img/logo.png">
 </p>
