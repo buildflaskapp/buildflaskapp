@@ -1,15 +1,22 @@
-def print_manual():
-    print('Usage: buildflaskapp [app_name] -[arguments]\n')
+from tabulate import tabulate
 
-    print('Options and arguments available for creating flask apps:')
-    print('  -d or --debugger \n\t Enables debugger mode on')
-    print('  -sl3 or --sqlite3 \n\t Enables sqlite3 mode on')
-    print('  -cj or --css-js \n\t Import stylesheet and script tag')
-    print('  -bs or --bootstrap \n\t Import bootstrap')
-    print('  -jq or --jQuery \n\t Import jQuery')
-    print('  -gsap or --gsap \n\tImport Gsap')
-    print('  -fa or --font-awesome \n\tImport Font awesome')
-    print('  -dc or --docker-container \n\t Generate Dockerfile and docker-compose.yml\n')
-    print('  -h or --help \n\t Print help')
-    print('  -v or --version \n\t Print version\n')
-    print('Example: build-flask-app hello-world -d -bs\n')
+def print_manual():
+    print('Usage: buildflaskapp [app_name] [options]\n')
+
+    print('Example: buildflaskapp hello-world -d -bs -gsap\n')
+
+
+    print(tabulate(
+        [
+            ['-d', '--debugger', 'Debugger mode on'],
+            ['-sl3', '--sqlite3', 'Sqlite3 mode on'],
+            ['-cj', '--css-js', 'Import Stylesheet and script tag'],
+            ['-bs', '--bootstrap', 'Import bootstrap'],
+            ['-jq', '--jQuery', 'Import jQuery'],
+            ['-gsap', '--gsap', 'Import gsap'],
+            ['-fa', '--font-awesome', 'Import font awesome'],
+            ['-dc', '--docker-container', 'Generate Dockerfile and docker-compose.yml'],
+            ['-h', '--help', 'Print help'],
+            ['-v', '--version', 'Print version']
+        ],
+        headers=['Options','','Description']))

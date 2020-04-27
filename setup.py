@@ -14,6 +14,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/askyourkode/buildflaskapp",
     packages=setuptools.find_packages(),
+    install_requires=['tabulate'],
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Framework :: Flask",
