@@ -37,8 +37,6 @@ def main():
                 debugger_mode = True
                 print("- Debugger mode on")
                 print("  |__ added debug=True")
-            else:
-                print("- Debugger mode off")
 
             if '-cj' in args or '--css-js' in args:
                 import_css_js = True
@@ -46,51 +44,37 @@ def main():
                 print("- Css and Js mode on")
                 print("  |__ import static/stylesheet/style.css")
                 print("  |__ import static/js/app.css")
-            else:
-                print("- Css and Js mode off")
 
             if '-bs' in args or '--bootstrap' in args:
                 import_bootstrap = True
                 print("- Bootstrap mode on")
                 print("  |__ import bootstrap CDN in templates/index.html")
-            else:
-                print("- Bootstrap mode off")
 
             if '-jq' in args or '--jquery' in args:
                 import_jquery = True
                 print("- jQuery mode on")
                 print("  |__ import jQuery CDN in templates/index.html")
-            else:
-                print("- jQuery mode off")
 
             if '-gsap' in args or '--gsap' in args:
                 import_gsap = True
                 print("- GSAP mode on")
                 print("  |__ import gsap CDN in templates/index.html")
-            else:
-                print("- GSAP mode off")
 
             if '-fa' in args or '--font-awesome' in args:
                 import_font_awesome = True
                 print("- Font Awesome mode on")
                 print("  |__ import font awesome CDN in templates/index.html")
-            else:
-                print("- Font awesome mode off")
             
             if '-sl3' in args or '--sqlite3' in args:
                 sqlite3_mode = True
                 print("- Sql Lite 3 mode on")
                 print("  |__ import sqlite3")
-            else:
-                print("- Sql Lite 3 mode off")
 
             if '-dc' in args or '--docker-container' in args:
                 use_docker = True
                 print("- Docker mode on")
                 print('  |__ cd %s' % app_name)
                 print('  |__ \"docker-compose up -d\" to start app')
-            else:
-                print("- Docker mode off")
 
             # create templates folder to hold index.html
             create_templates_folder(app_name, import_css_js, import_bootstrap, import_jquery, import_gsap, import_font_awesome)
