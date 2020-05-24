@@ -177,7 +177,7 @@ def add_css_js(app_name, import_css_js):
 
 def add_bootstrap(app_name, import_bootstrap):
   if import_bootstrap:
-    bootstrap_cdn = '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">\n'
+    bootstrap_cdn = '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">\n'
     head_tag = "</head>"
 
     input_file = open(app_name + templates_folder + '/index.html', 'rt')
@@ -191,7 +191,7 @@ def add_bootstrap(app_name, import_bootstrap):
 
 def add_jquery(app_name, import_jquery):
   if import_jquery:
-    jquery_cdn = '<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>\n'
+    jquery_cdn = '<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>\n'
     body_tag = "</body>"
 
     input_file = open(app_name + templates_folder + '/index.html', 'rt')
@@ -219,7 +219,7 @@ def add_gsap(app_name, import_gsap):
 
 def add_font_awesome(app_name, import_font_awesome):
   if import_font_awesome:
-    font_awesome_cdn = '<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">'
+    font_awesome_cdn = '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">'
     head_tag = "</head>"
 
     input_file = open(app_name + templates_folder + '/index.html', 'rt')
