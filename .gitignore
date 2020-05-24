@@ -3,4 +3,4 @@ __pycache__/
 build/
 build_flask_app.egg-info/
 dist/
-.egg-info/
+*.egg-info/
