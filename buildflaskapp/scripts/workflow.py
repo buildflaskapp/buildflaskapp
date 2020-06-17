@@ -54,7 +54,7 @@ def hello():
   return render_template('index.html')
 
 if __name__ == '__main__':
-  app.run()
+  app.run(host='0.0.0.0')
 """
     app_py_file.writelines([app_py])
     app_py_file.close()
@@ -67,8 +67,8 @@ if __name__ == '__main__':
 
 def set_debug_on(app_name, debugger_mode):
   if debugger_mode:
-    debug_on_string = 'app.run(debug=True)'
-    app_run_string = 'app.run()'
+    debug_on_string = "app.run(host='0.0.0.0', debug=True)"
+    app_run_string = "app.run(host='0.0.0.0')"
 
     app_py_file = open(app_name + '/app.py', 'rt')
     lines = app_py_file.read()
