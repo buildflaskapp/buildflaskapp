@@ -178,7 +178,7 @@ def add_css_js(app_name, import_css_js):
     input_file.close()
 
 def get_cdn_library_version(github_user, library):
-    if library is not 'bootstrap':
+    if library is not 'bootstrap' and library is not 'Font-Awesome':
         with urllib.request.urlopen(f'https://api.github.com/repos/{github_user}/{library}/tags') as url:
             data = json.loads(url.read().decode())
             version = data[0]['name']
@@ -237,9 +237,12 @@ def add_gsap(app_name, import_gsap):
         input_file = open(app_name + templates_folder + '/index.html', 'wt')
         input_file.write(lines)
         input_file.close()
+
+
 def add_font_awesome(app_name, import_font_awesome):
   if import_font_awesome:
-    font_awesome_cdn = '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">'
+    version = get_cdn_library_version('FortAwesome', 'Font-Awesome')
+    font_awesome_cdn = f'<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{version}/css/all.min.css" rel="stylesheet">\n'
     head_tag = "</head>"
 
     input_file = open(app_name + templates_folder + '/index.html', 'rt')
