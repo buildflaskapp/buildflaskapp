@@ -3,6 +3,8 @@ import sys
 import shutil
 from buildflaskapp.scripts.messages import empty_name, failure_msg, success_msg
 import re
+import json
+import urllib.request
 
 templates_folder = "/templates"
 static_folder = "/static"
@@ -175,48 +177,66 @@ def add_css_js(app_name, import_css_js):
     input_file.write(lines)
     input_file.close()
 
+def get_cdn_library_version(github_user, library):
+    if library is not 'bootstrap':
+        with urllib.request.urlopen(f'https://api.github.com/repos/{github_user}/{library}/tags') as url:
+            data = json.loads(url.read().decode())
+            version = data[0]['name']
+    #Using the tags on bootstrap may give us an alpha version so we use the latest release version
+    else:
+        with urllib.request.urlopen(f'https://api.github.com/repos/{github_user}/{library}/releases/latest') as url:
+            data = json.loads(url.read().decode())
+            version = data['tag_name']
+    return version
+
+
 def add_bootstrap(app_name, import_bootstrap):
-  if import_bootstrap:
-    bootstrap_cdn = '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">\n'
-    head_tag = "</head>"
+    if import_bootstrap:
+        version = get_cdn_library_version('twbs', 'bootstrap')
+        version = version[1:]
+        bootstrap_cdn = f'<link href="https://stackpath.bootstrapcdn.com/bootstrap/{version}/css/bootstrap.min.css" rel="stylesheet">\n'
+        head_tag = "</head>"
 
-    input_file = open(app_name + templates_folder + '/index.html', 'rt')
-    lines = input_file.read()
-    lines = lines.replace(head_tag, bootstrap_cdn + head_tag)
-    input_file.close()
+        input_file = open(app_name + templates_folder + '/index.html', 'rt')
+        lines = input_file.read()
+        lines = lines.replace(head_tag, bootstrap_cdn + head_tag)
+        input_file.close()
 
-    input_file = open(app_name + templates_folder + '/index.html', 'wt')
-    input_file.write(lines)
-    input_file.close()
+        input_file = open(app_name + templates_folder + '/index.html', 'wt')
+        input_file.write(lines)
+        input_file.close()
+
 
 def add_jquery(app_name, import_jquery):
-  if import_jquery:
-    jquery_cdn = '<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>\n'
-    body_tag = "</body>"
+    if import_jquery:
+        version = get_cdn_library_version('jquery', 'jquery')
+        jquery_cdn = f'<script src="https://code.jquery.com/jquery-{version}.min.js" crossorigin="anonymous"></script>\n'
+        body_tag = "</body>"
 
-    input_file = open(app_name + templates_folder + '/index.html', 'rt')
-    lines = input_file.read()
-    lines = lines.replace(body_tag, jquery_cdn + body_tag)
-    input_file.close()
+        input_file = open(app_name + templates_folder + '/index.html', 'rt')
+        lines = input_file.read()
+        lines = lines.replace(body_tag, jquery_cdn + body_tag)
+        input_file.close()
 
-    input_file = open(app_name + templates_folder + '/index.html', 'wt')
-    input_file.write(lines)
-    input_file.close()
+        input_file = open(app_name + templates_folder + '/index.html', 'wt')
+        input_file.write(lines)
+        input_file.close()
+
 
 def add_gsap(app_name, import_gsap):
-  if import_gsap:
-    gsap_cdn = '<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>\n'
-    body_tag = "</body>"
+    if import_gsap:
+        version = get_cdn_library_version('greensock', 'GSAP')
+        gsap_cdn = f'<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/{version}/gsap.min.js"></script>\n'
+        body_tag = "</body>"
 
-    input_file = open(app_name + templates_folder + '/index.html', 'rt')
-    lines = input_file.read()
-    lines = lines.replace(body_tag, gsap_cdn + body_tag)
-    input_file.close()
+        input_file = open(app_name + templates_folder + '/index.html', 'rt')
+        lines = input_file.read()
+        lines = lines.replace(body_tag, gsap_cdn + body_tag)
+        input_file.close()
 
-    input_file = open(app_name + templates_folder + '/index.html', 'wt')
-    input_file.write(lines)
-    input_file.close()
-
+        input_file = open(app_name + templates_folder + '/index.html', 'wt')
+        input_file.write(lines)
+        input_file.close()
 def add_font_awesome(app_name, import_font_awesome):
   if import_font_awesome:
     font_awesome_cdn = '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">'
