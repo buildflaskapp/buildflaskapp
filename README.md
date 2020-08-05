@@ -84,7 +84,7 @@ You can push the app to a docker container instead of running it locally. Simply
 ```
 $ buildflaskapp app_name -dC
 ```
-
+The latest stable versions of the CDN are automatically fetched using Github's APIs.
 
 ### Features
 - [x] Manual(--help)
